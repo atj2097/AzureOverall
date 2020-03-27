@@ -9,7 +9,7 @@
 import Foundation
 
 struct Recipe: Codable {
-    let results: [Result]
+    let results: [RecipeResult]
     let baseURI: String
     let offset, number, totalResults, processingTimeMS: Int
     let expires: Int
@@ -24,7 +24,7 @@ struct Recipe: Codable {
 }
 
 // MARK: - Result
-struct Result: Codable {
+struct RecipeResult: Codable {
     let id: Int
     let title: String
     let readyInMinutes, servings: Int

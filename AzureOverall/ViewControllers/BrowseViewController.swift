@@ -7,26 +7,27 @@
 //
 
 import UIKit
-
+import Alamofire
 class BrowseViewController: UIViewController {
     let browseView = BrowseView()
-    
+    var recipes = [RecipeResult]()
+    var searchWord: String = "apple"
+    var requestSize: Int = 6
     
     override func viewDidLoad() {
         super.viewDidLoad()
         view.addSubview(browseView)
+        fetchData()
         // Do any additional setup after loading the view.
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    func fetchData() {
+        let request = AF.request("\(AzureConstants.apiURL)?query=\(searchWord)&number=\(requestSize)&apiKey=249c711f71d941458cde77e4419fbcde")
+          request.responseDecodable(of: Recipe.self) { (response) in
+            guard let data = response.value else { return }
+            self.recipes = data.results
+            //reload data of table view
+          }
+        }
     }
-    */
 
-}
