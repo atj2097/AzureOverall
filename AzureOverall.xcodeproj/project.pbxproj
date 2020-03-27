@@ -18,6 +18,7 @@
 		CB5F28E3242EB72B00AC44E1 /* BrowseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB5F28E2242EB72B00AC44E1 /* BrowseView.swift */; };
 		CB5F28E5242EB74800AC44E1 /* CartScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB5F28E4242EB74800AC44E1 /* CartScreenView.swift */; };
 		CB5F28E7242EB7A200AC44E1 /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB5F28E6242EB7A200AC44E1 /* DetailView.swift */; };
+		CB5F28EA242EC39F00AC44E1 /* Secrets.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB5F28E9242EC39F00AC44E1 /* Secrets.swift */; };
 		CB6DC571242EADCB004ED206 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB6DC570242EADCB004ED206 /* AppDelegate.swift */; };
 		CB6DC573242EADCB004ED206 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB6DC572242EADCB004ED206 /* SceneDelegate.swift */; };
 		CB6DC575242EADCB004ED206 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB6DC574242EADCB004ED206 /* ViewController.swift */; };
@@ -62,6 +63,7 @@
 		CB5F28E2242EB72B00AC44E1 /* BrowseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrowseView.swift; sourceTree = "<group>"; };
 		CB5F28E4242EB74800AC44E1 /* CartScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartScreenView.swift; sourceTree = "<group>"; };
 		CB5F28E6242EB7A200AC44E1 /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
+		CB5F28E9242EC39F00AC44E1 /* Secrets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Secrets.swift; sourceTree = "<group>"; };
 		CB6DC56D242EADCB004ED206 /* AzureOverall.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AzureOverall.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CB6DC570242EADCB004ED206 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CB6DC572242EADCB004ED206 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -143,6 +145,14 @@
 			path = ViewControllers;
 			sourceTree = "<group>";
 		};
+		CB5F28E8242EC38300AC44E1 /* Secret */ = {
+			isa = PBXGroup;
+			children = (
+				CB5F28E9242EC39F00AC44E1 /* Secrets.swift */,
+			);
+			path = Secret;
+			sourceTree = "<group>";
+		};
 		CB6DC564242EADCB004ED206 = {
 			isa = PBXGroup;
 			children = (
@@ -168,6 +178,7 @@
 		CB6DC56F242EADCB004ED206 /* AzureOverall */ = {
 			isa = PBXGroup;
 			children = (
+				CB5F28E8242EC38300AC44E1 /* Secret */,
 				CB5F28DB242EB67400AC44E1 /* ViewControllers */,
 				CB5F28D8242EB58C00AC44E1 /* Model */,
 				CB5F28D5242EB4ED00AC44E1 /* Constants */,
@@ -473,6 +484,7 @@
 				CB5F28D7242EB50E00AC44E1 /* AzureConstants.swift in Sources */,
 				CB6DC573242EADCB004ED206 /* SceneDelegate.swift in Sources */,
 				CB5F28DA242EB5E600AC44E1 /* RecipeModel.swift in Sources */,
+				CB5F28EA242EC39F00AC44E1 /* Secrets.swift in Sources */,
 				CB5F28DD242EB6B900AC44E1 /* BrowseViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

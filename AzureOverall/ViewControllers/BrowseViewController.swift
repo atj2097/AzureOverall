@@ -18,7 +18,6 @@ class BrowseViewController: UIViewController {
         super.viewDidLoad()
         view.addSubview(browseView)
         fetchData()
-        // Do any additional setup after loading the view.
     }
     
     func fetchData() {
@@ -26,7 +25,6 @@ class BrowseViewController: UIViewController {
           request.responseDecodable(of: Recipe.self) { (response) in
             guard let data = response.value else { return }
             self.recipes = data.results
-            //reload data of table view
           }
         }
     }
