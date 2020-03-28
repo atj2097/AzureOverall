@@ -19,19 +19,27 @@ class BrowseViewController: UIViewController {
         }
     }
     
-    var searchWord: String = "apple"
+    var searchWord: String = "" {
+        didSet {
+            browseView.collectionView.reloadData()
+        }
+    }
+    
+    
+    
     var requestSize: Int = 6
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        fetchData()
         view.addSubview(browseView)
         browseView.collectionView.delegate = self
         browseView.collectionView.dataSource = self
+        browseView.searchBar.delegate = self
+        
     }
     
-   private func fetchData() {
-        let request = AF.request("\(AzureConstants.apiURL)?query=\(searchWord)&number=\(requestSize)&apiKey=\(SecretAPIKey.recipeAPIKey)")
+    private func fetchData(search: String) {
+        let request = AF.request("\(AzureConstants.apiURL)?query=\(search)&number=\(requestSize)&apiKey=\(SecretAPIKey.recipeAPIKey)")
     DispatchQueue.main.async {
           request.responseDecodable(of: Recipe.self) { (response) in
             guard let data = response.value else { return }
@@ -70,4 +78,12 @@ extension BrowseViewController: UICollectionViewDataSource {
     
     
     
+}
+//MARK: Search Bar
+extension BrowseViewController: UISearchBarDelegate {
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        self.searchWord = searchBar.text ?? "apple"
+        fetchData(search: self.searchWord.lowercased())
+    
+    }
 }
