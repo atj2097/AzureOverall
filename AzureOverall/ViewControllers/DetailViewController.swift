@@ -7,25 +7,25 @@
 //
 
 import UIKit
-
+import Kingfisher
 class DetailViewController: UIViewController {
     let detailView = DetailView()
+    var currentRecipe: RecipeResult!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         view.addSubview(detailView)
+        setUpData()
         // Do any additional setup after loading the view.
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    func setUpData() {
+        detailView.recipeTitle.text = currentRecipe.title
+        let url = URL(string: AzureConstants.baseImageURL + currentRecipe.imageUrls[0])
+        detailView.recipeImage.kf.setImage(with: url)
+        detailView.servings.text = "Servings: \( currentRecipe.servings)"
+        detailView.readyIn.text = "Ready In: \(currentRecipe.readyInMinutes) Minutes"
     }
-    */
+   
 
 }

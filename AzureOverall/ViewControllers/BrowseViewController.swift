@@ -75,6 +75,11 @@ extension BrowseViewController: UICollectionViewDataSource {
         cell.servings.text = "Servings: \(currentRecipe.servings)"
         return cell
     }
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let detailVC = DetailViewController()
+        detailVC.currentRecipe = recipes[indexPath.row]
+        self.present(detailVC, animated: true, completion: nil)
+    }
     
     
     
