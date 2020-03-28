@@ -14,6 +14,17 @@ class BrowseView: UIView {
     
     var animator: (LayoutAttributesAnimator, Bool, Int, Int)?
     
+    lazy var pursuitFarms: UILabel = {
+        let label = UILabel()
+        label.font = UIFont(name: AzureConstants.azureFont , size: 40)
+         label.font = UIFont.boldSystemFont(ofSize: 40)
+        label.textColor = AzureConstants.azureGreen
+        label.text = "Pursuit Farms"
+        label.lineBreakMode = NSLineBreakMode.byWordWrapping
+        label.numberOfLines = 0
+        return label
+    }()
+    
     lazy var searchBar: UISearchBar = {
         let searchBar = UISearchBar()
         searchBar.placeholder = "Search Recipe"
@@ -43,22 +54,29 @@ collectionView.register(RecipeCellCollectionViewCell.self, forCellWithReuseIdent
     private func commonInit() {
         addSubview(collectionView)
         addSubview(searchBar)
+        addSubview(pursuitFarms)
         constraints()
         backgroundColor = .white
         
     }
     
     private func constraints() {
+        pursuitFarms.snp.makeConstraints{ make in
+            make.centerX.equalTo(self)
+            make.width.equalTo(self)
+            make.top.equalTo(self).offset(55)
+            
+        }
         searchBar.snp.makeConstraints{ make in
-            make.top.equalTo(self).offset(40)
+            make.top.equalTo(self).offset(100)
             make.width.equalTo(self)
             make.centerX.equalTo(self)
             
         }
         collectionView.snp.makeConstraints{ make in
             make.width.equalTo(self)
-            make.height.equalTo(self)
-            make.top.equalTo(searchBar).offset(5)
+            make.height.equalTo(600)
+            make.top.equalTo(searchBar)
         }
     }
 
