@@ -1,5 +1,5 @@
 //
-//  Secrets.swift
+//  CellIdentifiers.swift
 //  AzureOverall
 //
 //  Created by God on 3/27/20.
@@ -7,6 +7,6 @@
 //
 
 import Foundation
-struct SecretAPIKey {
-     static let recipeAPIKey = "249c711f71d941458cde77e4419fbcde"
+enum CellIdentifiers: String {
+    case recipeCell
 }

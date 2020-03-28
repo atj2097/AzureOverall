@@ -8,24 +8,28 @@
 
 import UIKit
 import Alamofire
+
+
 class BrowseViewController: UIViewController {
     let browseView = BrowseView()
     var recipes = [RecipeResult]()
     var searchWord: String = "apple"
     var requestSize: Int = 6
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.addSubview(browseView)
-        fetchData()
+//        view.addSubview(browseView)
+//        let cardSlider = CardSliderViewController.with(dataSource: self)
+//        cardSlider.title = "Movies"
+//        cardSlider.modalPresentationStyle = .fullScreen
+//        present(cardSlider, animated: true, completion: nil)
     }
     
-    func fetchData() {
-        let request = AF.request("\(AzureConstants.apiURL)?query=\(searchWord)&number=\(requestSize)&apiKey=249c711f71d941458cde77e4419fbcde")
+   private func fetchData() {
+        let request = AF.request("\(AzureConstants.apiURL)?query=\(searchWord)&number=\(requestSize)&apiKey=\(SecretAPIKey.recipeAPIKey)")
           request.responseDecodable(of: Recipe.self) { (response) in
             guard let data = response.value else { return }
             self.recipes = data.results
           }
         }
-    }
-
+}

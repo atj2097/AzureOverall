@@ -7,15 +7,27 @@
 //
 
 import UIKit
+import SnapKit
 
 class BrowseView: UIView {
+    
+    lazy var collectionView: UICollectionView = {
+      let collectionView = UICollectionView()
+        
+    return collectionView
+    }()
+    override init(frame: CGRect) {
+           super.init(frame: UIScreen.main.bounds)
+           commonInit()
 
-    /*
-    // Only override draw() if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
-    override func draw(_ rect: CGRect) {
-        // Drawing code
+       }
+       
+       required init?(coder aDecoder: NSCoder) {
+           super.init(coder: aDecoder)
+       
+       }
+    private func commonInit() {
+        
     }
-    */
 
 }
