@@ -44,6 +44,7 @@ collectionView.register(RecipeCellCollectionViewCell.self, forCellWithReuseIdent
         addSubview(collectionView)
         addSubview(searchBar)
         constraints()
+        backgroundColor = .white
         
     }
     
@@ -57,6 +58,7 @@ collectionView.register(RecipeCellCollectionViewCell.self, forCellWithReuseIdent
         collectionView.snp.makeConstraints{ make in
             make.width.equalTo(self)
             make.height.equalTo(self)
+            make.top.equalTo(searchBar).offset(5)
         }
     }
 

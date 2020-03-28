@@ -62,6 +62,9 @@ extension BrowseViewController: UICollectionViewDataSource {
         let currentRecipe = recipes[indexPath.row]
         let url = URL(string: AzureConstants.baseImageURL + currentRecipe.imageUrls[0])
         cell.recipeImage.kf.setImage(with: url)
+        cell.recipeTitle.text = currentRecipe.title
+        cell.readyMinutes.text = "Ready In: \(currentRecipe.readyInMinutes) minutes"
+        cell.servings.text = "Servings: \(currentRecipe.servings)"
         return cell
     }
     

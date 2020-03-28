@@ -13,4 +13,5 @@ struct AzureConstants {
    static let azureWhite: UIColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
    static let apiURL = "https://api.spoonacular.com/recipes/search"
     static let baseImageURL = "https://spoonacular.com/recipeImages/"
+    static let azureFont = "Avenir Next"
 }
