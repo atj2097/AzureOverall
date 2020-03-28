@@ -159,13 +159,13 @@ PODS:
     - abseil/base/config
     - abseil/meta/type_traits
   - Alamofire (5.0.5)
+  - AnimatedCollectionViewLayout (1.0.1)
   - BoringSSL-GRPC (0.0.3):
     - BoringSSL-GRPC/Implementation (= 0.0.3)
     - BoringSSL-GRPC/Interface (= 0.0.3)
   - BoringSSL-GRPC/Implementation (0.0.3):
     - BoringSSL-GRPC/Interface (= 0.0.3)
   - BoringSSL-GRPC/Interface (0.0.3)
-  - CardSlider (0.1.0)
   - Firebase/Auth (6.18.0):
     - Firebase/CoreOnly
     - FirebaseAuth (~> 6.4.3)
@@ -262,7 +262,7 @@ PODS:
 
 DEPENDENCIES:
   - Alamofire (~> 5.0)
-  - CardSlider
+  - AnimatedCollectionViewLayout
   - Firebase/Auth
   - Firebase/Firestore
   - Firebase/Storage
@@ -274,8 +274,8 @@ SPEC REPOS:
   trunk:
     - abseil
     - Alamofire
+    - AnimatedCollectionViewLayout
     - BoringSSL-GRPC
-    - CardSlider
     - Firebase
     - FirebaseAuth
     - FirebaseAuthInterop
@@ -299,8 +299,8 @@ SPEC REPOS:
 SPEC CHECKSUMS:
   abseil: 18063d773f5366ff8736a050fe035a28f635fd27
   Alamofire: df2f8f826963b08b9a870791ad48e07a10090b2e
+  AnimatedCollectionViewLayout: 00f0997fd26f0fd02d8b99765023b95570b5d826
   BoringSSL-GRPC: db8764df3204ccea016e1c8dd15d9a9ad63ff318
-  CardSlider: 0a8f5f17f5a76701771794b07fdaeddc512358c8
   Firebase: 0490eca762a72e4f1582319539153897f1508dee
   FirebaseAuth: 5ce2b03a3d7fe56b7a6e4c5ec7ff1522890b1d6f
   FirebaseAuthInterop: 0ffa57668be100582bb7643d4fcb7615496c41fc
@@ -321,6 +321,6 @@ SPEC CHECKSUMS:
   paper-onboarding: d3f16416e6f42add686117e8b32bfffaad899a79
   SnapKit: fe8a619752f3f27075cc9a90244d75c6c3f27e2a
 
-PODFILE CHECKSUM: 902974b11fd7d17fcd27dcac029b222c0a00ce95
+PODFILE CHECKSUM: 340a8ca8f69a1cf0019c6bdf81df2cf68868d381
 
 COCOAPODS: 1.9.0

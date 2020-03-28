@@ -6,10 +6,10 @@
 //  Copyright © 2020 Adam Jackson. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 struct Recipe: Codable {
-    let results: [Result]
+    let results: [RecipeResult]
     let baseURI: String
     let offset, number, totalResults, processingTimeMS: Int
     let expires: Int
@@ -24,7 +24,9 @@ struct Recipe: Codable {
 }
 
 // MARK: - Result
-struct Result: Codable {
+struct RecipeResult: Codable {
+ 
+    
     let id: Int
     let title: String
     let readyInMinutes, servings: Int

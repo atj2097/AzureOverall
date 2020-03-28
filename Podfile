@@ -9,12 +9,11 @@ target 'AzureOverall' do
 	pod 'Firebase/Auth'
 	pod 'Firebase/Firestore' 
 	pod 'Firebase/Storage'  
-	pod 'CardSlider'
 	pod 'paper-onboarding' 
 	pod 'SnapKit', '~> 4.0'  
 	pod 'Alamofire', '~> 5.0' 
 	pod 'Kingfisher', '~> 5.0'
-
+	pod 'AnimatedCollectionViewLayout' 
   target 'AzureOverallTests' do
     inherit! :search_paths
     # Pods for testing

@@ -10,6 +10,8 @@
 		2B5F84BCA38ECD015A604460 /* Pods_AzureOverallTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A3BFCE59E2D9CF76259C709B /* Pods_AzureOverallTests.framework */; };
 		3CA68C2C09E1710455A45A26 /* Pods_AzureOverall_AzureOverallUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6AC8875AE7DDA0B558D42EFE /* Pods_AzureOverall_AzureOverallUITests.framework */; };
 		A21C94344AF04E31321DD48E /* Pods_AzureOverall.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20A7DD02CEE8A71C29C7B9ED /* Pods_AzureOverall.framework */; };
+		CB506391242EE27800BBD37D /* CellIdentifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB506390242EE27800BBD37D /* CellIdentifiers.swift */; };
+		CB506394242EE2BC00BBD37D /* RecipeCellCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB506393242EE2BC00BBD37D /* RecipeCellCollectionViewCell.swift */; };
 		CB5F28D7242EB50E00AC44E1 /* AzureConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB5F28D6242EB50E00AC44E1 /* AzureConstants.swift */; };
 		CB5F28DA242EB5E600AC44E1 /* RecipeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB5F28D9242EB5E600AC44E1 /* RecipeModel.swift */; };
 		CB5F28DD242EB6B900AC44E1 /* BrowseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB5F28DC242EB6B900AC44E1 /* BrowseViewController.swift */; };
@@ -18,6 +20,7 @@
 		CB5F28E3242EB72B00AC44E1 /* BrowseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB5F28E2242EB72B00AC44E1 /* BrowseView.swift */; };
 		CB5F28E5242EB74800AC44E1 /* CartScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB5F28E4242EB74800AC44E1 /* CartScreenView.swift */; };
 		CB5F28E7242EB7A200AC44E1 /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB5F28E6242EB7A200AC44E1 /* DetailView.swift */; };
+		CB5F28EA242EC39F00AC44E1 /* Secrets.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB5F28E9242EC39F00AC44E1 /* Secrets.swift */; };
 		CB6DC571242EADCB004ED206 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB6DC570242EADCB004ED206 /* AppDelegate.swift */; };
 		CB6DC573242EADCB004ED206 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB6DC572242EADCB004ED206 /* SceneDelegate.swift */; };
 		CB6DC575242EADCB004ED206 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB6DC574242EADCB004ED206 /* ViewController.swift */; };
@@ -54,6 +57,8 @@
 		6AC8875AE7DDA0B558D42EFE /* Pods_AzureOverall_AzureOverallUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AzureOverall_AzureOverallUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A3BFCE59E2D9CF76259C709B /* Pods_AzureOverallTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AzureOverallTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A715B3745516011F9AAAFE71 /* Pods-AzureOverallTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AzureOverallTests.debug.xcconfig"; path = "Target Support Files/Pods-AzureOverallTests/Pods-AzureOverallTests.debug.xcconfig"; sourceTree = "<group>"; };
+		CB506390242EE27800BBD37D /* CellIdentifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellIdentifiers.swift; sourceTree = "<group>"; };
+		CB506393242EE2BC00BBD37D /* RecipeCellCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeCellCollectionViewCell.swift; sourceTree = "<group>"; };
 		CB5F28D6242EB50E00AC44E1 /* AzureConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AzureConstants.swift; sourceTree = "<group>"; };
 		CB5F28D9242EB5E600AC44E1 /* RecipeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeModel.swift; sourceTree = "<group>"; };
 		CB5F28DC242EB6B900AC44E1 /* BrowseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrowseViewController.swift; sourceTree = "<group>"; };
@@ -62,6 +67,7 @@
 		CB5F28E2242EB72B00AC44E1 /* BrowseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrowseView.swift; sourceTree = "<group>"; };
 		CB5F28E4242EB74800AC44E1 /* CartScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartScreenView.swift; sourceTree = "<group>"; };
 		CB5F28E6242EB7A200AC44E1 /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
+		CB5F28E9242EC39F00AC44E1 /* Secrets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Secrets.swift; sourceTree = "<group>"; };
 		CB6DC56D242EADCB004ED206 /* AzureOverall.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AzureOverall.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CB6DC570242EADCB004ED206 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CB6DC572242EADCB004ED206 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -117,10 +123,19 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		CB506392242EE29B00BBD37D /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				CB506393242EE2BC00BBD37D /* RecipeCellCollectionViewCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
 		CB5F28D5242EB4ED00AC44E1 /* Constants */ = {
 			isa = PBXGroup;
 			children = (
 				CB5F28D6242EB50E00AC44E1 /* AzureConstants.swift */,
+				CB506390242EE27800BBD37D /* CellIdentifiers.swift */,
 			);
 			path = Constants;
 			sourceTree = "<group>";
@@ -141,6 +156,14 @@
 				CB5F28E0242EB6FC00AC44E1 /* DetailViewController.swift */,
 			);
 			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		CB5F28E8242EC38300AC44E1 /* Secret */ = {
+			isa = PBXGroup;
+			children = (
+				CB5F28E9242EC39F00AC44E1 /* Secrets.swift */,
+			);
+			path = Secret;
 			sourceTree = "<group>";
 		};
 		CB6DC564242EADCB004ED206 = {
@@ -168,6 +191,8 @@
 		CB6DC56F242EADCB004ED206 /* AzureOverall */ = {
 			isa = PBXGroup;
 			children = (
+				CB506392242EE29B00BBD37D /* Cells */,
+				CB5F28E8242EC38300AC44E1 /* Secret */,
 				CB5F28DB242EB67400AC44E1 /* ViewControllers */,
 				CB5F28D8242EB58C00AC44E1 /* Model */,
 				CB5F28D5242EB4ED00AC44E1 /* Constants */,
@@ -463,6 +488,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CB5F28E5242EB74800AC44E1 /* CartScreenView.swift in Sources */,
+				CB506394242EE2BC00BBD37D /* RecipeCellCollectionViewCell.swift in Sources */,
 				CB5F28E7242EB7A200AC44E1 /* DetailView.swift in Sources */,
 				CB5F28E1242EB6FC00AC44E1 /* DetailViewController.swift in Sources */,
 				CB6DC575242EADCB004ED206 /* ViewController.swift in Sources */,
@@ -473,6 +499,8 @@
 				CB5F28D7242EB50E00AC44E1 /* AzureConstants.swift in Sources */,
 				CB6DC573242EADCB004ED206 /* SceneDelegate.swift in Sources */,
 				CB5F28DA242EB5E600AC44E1 /* RecipeModel.swift in Sources */,
+				CB5F28EA242EC39F00AC44E1 /* Secrets.swift in Sources */,
+				CB506391242EE27800BBD37D /* CellIdentifiers.swift in Sources */,
 				CB5F28DD242EB6B900AC44E1 /* BrowseViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -7,26 +7,67 @@
 //
 
 import UIKit
+import Alamofire
+import Kingfisher
+import AnimatedCollectionViewLayout
 
 class BrowseViewController: UIViewController {
     let browseView = BrowseView()
+    var recipes = [RecipeResult]() {
+        didSet {
+            browseView.collectionView.reloadData()
+        }
+    }
     
-    
+    var searchWord: String = "apple"
+    var requestSize: Int = 6
+
     override func viewDidLoad() {
         super.viewDidLoad()
+        fetchData()
         view.addSubview(browseView)
-        // Do any additional setup after loading the view.
+        browseView.collectionView.delegate = self
+        browseView.collectionView.dataSource = self
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+   private func fetchData() {
+        let request = AF.request("\(AzureConstants.apiURL)?query=\(searchWord)&number=\(requestSize)&apiKey=\(SecretAPIKey.recipeAPIKey)")
+    DispatchQueue.main.async {
+          request.responseDecodable(of: Recipe.self) { (response) in
+            guard let data = response.value else { return }
+            self.recipes = data.results
+            print(self.recipes.count)
+            print(self.recipes[0])
+            self.browseView.collectionView.reloadData()
+          }
+        }
     }
-    */
+    
+}
+extension BrowseViewController: UICollectionViewDelegate {
+    
+}
 
+extension BrowseViewController: UICollectionViewDataSource {
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return 1
+    }
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return recipes.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        guard let cell = browseView.collectionView.dequeueReusableCell(withReuseIdentifier: CellIdentifiers.recipeCell.rawValue, for: indexPath) as? RecipeCellCollectionViewCell else {return UICollectionViewCell()}
+        
+        let currentRecipe = recipes[indexPath.row]
+        let url = URL(string: AzureConstants.baseImageURL + currentRecipe.imageUrls[0])
+        cell.recipeImage.kf.setImage(with: url)
+        cell.recipeTitle.text = currentRecipe.title
+        cell.readyMinutes.text = "Ready In: \(currentRecipe.readyInMinutes) minutes"
+        cell.servings.text = "Servings: \(currentRecipe.servings)"
+        return cell
+    }
+    
+    
+    
 }
