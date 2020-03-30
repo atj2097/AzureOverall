@@ -9,7 +9,7 @@
 import UIKit
 
 class DetailView: UIView {
-    
+    var currentRecipe: RecipeResult!
     lazy var recipeImage: UIImageView = {
         let imageView = UIImageView()
         return imageView
@@ -72,6 +72,7 @@ class DetailView: UIView {
     }
     
     @objc func addToCart() {
+        try? CartPersistenceManager.manager.saveRecipe(recipe: currentRecipe)
 
     }
     

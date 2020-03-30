@@ -34,6 +34,7 @@
 		CB878D1D24314E2B00472AB5 /* CartModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB878D1C24314E2B00472AB5 /* CartModel.swift */; };
 		CBD10A5F24327390009A9E82 /* PersistenceHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBD10A5E24327390009A9E82 /* PersistenceHelper.swift */; };
 		CBD10A61243273CA009A9E82 /* CartPersistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBD10A60243273CA009A9E82 /* CartPersistence.swift */; };
+		CBD10A632432768F009A9E82 /* CartItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBD10A622432768F009A9E82 /* CartItemCell.swift */; };
 		CBE93DDB242F8CD500D9158E /* AddToCart.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE93DDA242F8CD500D9158E /* AddToCart.swift */; };
 /* End PBXBuildFile section */
 
@@ -93,6 +94,7 @@
 		CB878D1C24314E2B00472AB5 /* CartModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartModel.swift; sourceTree = "<group>"; };
 		CBD10A5E24327390009A9E82 /* PersistenceHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceHelper.swift; sourceTree = "<group>"; };
 		CBD10A60243273CA009A9E82 /* CartPersistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartPersistence.swift; sourceTree = "<group>"; };
+		CBD10A622432768F009A9E82 /* CartItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartItemCell.swift; sourceTree = "<group>"; };
 		CBE93DDA242F8CD500D9158E /* AddToCart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddToCart.swift; sourceTree = "<group>"; };
 		E3B1DEFCA2A4464235B55EDF /* Pods-AzureOverall-AzureOverallUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AzureOverall-AzureOverallUITests.debug.xcconfig"; path = "Target Support Files/Pods-AzureOverall-AzureOverallUITests/Pods-AzureOverall-AzureOverallUITests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -139,6 +141,7 @@
 			isa = PBXGroup;
 			children = (
 				CB506393242EE2BC00BBD37D /* RecipeCellCollectionViewCell.swift */,
+				CBD10A622432768F009A9E82 /* CartItemCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -521,6 +524,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CBD10A632432768F009A9E82 /* CartItemCell.swift in Sources */,
 				CBE93DDB242F8CD500D9158E /* AddToCart.swift in Sources */,
 				CB5F28E5242EB74800AC44E1 /* CartScreenView.swift in Sources */,
 				CB506394242EE2BC00BBD37D /* RecipeCellCollectionViewCell.swift in Sources */,

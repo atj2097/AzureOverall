@@ -15,6 +15,7 @@ class DetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.addSubview(detailView)
+        detailView.currentRecipe = currentRecipe
         setUpData()
         self.navigationItem.title = ""
         
