@@ -12,6 +12,7 @@ import Kingfisher
 import AnimatedCollectionViewLayout
 
 class BrowseViewController: UIViewController {
+    
     let browseView = BrowseView()
     var recipes = [RecipeResult]() {
         didSet {
@@ -35,6 +36,17 @@ class BrowseViewController: UIViewController {
         browseView.collectionView.delegate = self
         browseView.collectionView.dataSource = self
         browseView.searchBar.delegate = self
+        setupNavigationBar()
+    }
+    
+    private func setupNavigationBar() {
+        let image = UIImage(systemName: "cart.fill")
+       let cartButton = UIBarButtonItem(image: image, style: .done, target: self, action: #selector(testFunc))
+        cartButton.tintColor = AzureConstants.azureGreen
+      UIUtilities.setUpNavigationBar(title: "Pursuit Farms", viewController: self, leftBarButton: cartButton)
+    }
+    
+    @objc func testFunc() {
         
     }
     
@@ -49,6 +61,14 @@ class BrowseViewController: UIViewController {
             self.browseView.collectionView.reloadData()
           }
         }
+    }
+    private func dismissKeyboardWithTap() {
+      let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+      view.addGestureRecognizer(tap)
+    }
+    
+    @objc func dismissKeyboard() {
+      view.endEditing(true)
     }
     
 }
@@ -78,7 +98,8 @@ extension BrowseViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let detailVC = DetailViewController()
         detailVC.currentRecipe = recipes[indexPath.row]
-        self.present(detailVC, animated: true, completion: nil)
+        detailVC.modalPresentationStyle = .fullScreen
+        self.navigationController?.pushViewController(detailVC, animated: true)
     }
     
     

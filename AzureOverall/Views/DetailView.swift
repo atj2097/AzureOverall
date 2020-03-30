@@ -72,7 +72,7 @@ class DetailView: UIView {
     }
     
     @objc func addToCart() {
-        
+
     }
     
     private func constraints() {

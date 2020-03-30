@@ -16,7 +16,9 @@ class DetailViewController: UIViewController {
         super.viewDidLoad()
         view.addSubview(detailView)
         setUpData()
-        // Do any additional setup after loading the view.
+        self.navigationItem.title = ""
+        
+         // Do any additional setup after loading the view.
     }
     
     func setUpData() {
