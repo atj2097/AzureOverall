@@ -23,6 +23,7 @@ class CartScreenViewController: UIViewController {
     
     private func loadCart() {
         cart = try! CartPersistenceManager.manager.getCart()
+        
     }
 
 }

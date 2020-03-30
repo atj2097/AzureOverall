@@ -12,7 +12,7 @@ class CartScreenView: UIView {
     
     lazy var tableView: UITableView = {
         let table = UITableView(frame: .zero, style: .plain)
-        table.register(AddToCart.self, forCellReuseIdentifier: "cartCell")
+        table.register(CartItemCell.self, forCellReuseIdentifier: "cartCell")
         return table
     }()
     

@@ -55,9 +55,7 @@ class BrowseViewController: UIViewController {
     DispatchQueue.main.async {
           request.responseDecodable(of: Recipe.self) { (response) in
             guard let data = response.value else { return }
-            self.recipes = data.results
-            print(self.recipes.count)
-            print(self.recipes[0])
+            self.recipes = data.results 
             self.browseView.collectionView.reloadData()
           }
         }

@@ -73,6 +73,7 @@ class DetailView: UIView {
     
     @objc func addToCart() {
         try? CartPersistenceManager.manager.saveRecipe(recipe: currentRecipe)
+        
 
     }
     
