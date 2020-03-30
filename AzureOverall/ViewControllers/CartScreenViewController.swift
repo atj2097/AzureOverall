@@ -7,25 +7,43 @@
 //
 
 import UIKit
-
+import Kingfisher
 class CartScreenViewController: UIViewController {
     let cartScreen = CartScreenView()
+    var cart = [RecipeResult]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         view.addSubview(cartScreen)
+        cartScreen.tableView.delegate = self
+        cartScreen.tableView.dataSource = self
+        loadCart()
         // Do any additional setup after loading the view.
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    private func loadCart() {
+        cart = try! CartPersistenceManager.manager.getCart()
     }
-    */
 
+}
+
+extension CartScreenViewController: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return cart.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = cartScreen.tableView.dequeueReusableCell(withIdentifier: CellIdentifiers.cartCell.rawValue, for: indexPath) as? CartItemCell else {return UITableViewCell()}
+        let currentCartItem = cart[indexPath.row]
+        cell.title.text = currentCartItem.title
+        let url = URL(string: AzureConstants.baseImageURL + currentCartItem.imageUrls[0])
+        cell.recipeImageView.kf.setImage(with: url)
+        return cell
+    }
+    
+    
+}
+
+extension CartScreenViewController: UITableViewDelegate {
+    
 }
