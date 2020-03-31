@@ -54,18 +54,29 @@ class BrowseView: UIView {
     private func commonInit() {
         addSubview(collectionView)
         addSubview(searchBar)
+        searchBarConstraints()
         constraints()
         backgroundColor = .white
-        
+    }
+    
+    private func searchBarConstraints() {
+        searchBar.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            searchBar.leadingAnchor.constraint(equalTo: leadingAnchor),
+            searchBar.topAnchor.constraint(equalTo: topAnchor, constant: 105),
+            searchBar.centerXAnchor.constraint(equalTo: centerXAnchor),
+            searchBar.trailingAnchor.constraint(equalTo: trailingAnchor),
+            searchBar.heightAnchor.constraint(equalToConstant: frame.height / 10)
+        ])
     }
     
     private func constraints() {
-        
-        searchBar.snp.makeConstraints{ make in
-            make.top.equalTo(self).offset(80)
-            make.width.equalTo(self)
-            make.centerX.equalTo(self)
-        }
+
+//        searchBar.snp.makeConstraints{ make in
+//            make.top.equalTo(self).offset(80)
+//            make.width.equalTo(self)
+//            make.centerX.equalTo(self)
+//        }
         
         //Collection View
         var viewWidth = self.bounds.width / 1
