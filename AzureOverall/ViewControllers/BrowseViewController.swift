@@ -103,7 +103,6 @@ extension BrowseViewController: UICollectionViewDataSource {
 extension BrowseViewController: UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         self.searchWord = searchBar.text?.replacingOccurrences(of: " ", with: "+") ?? "apple"
-//  fetchData(search: self.searchWord.lowercased())
         loadData(foodName: self.searchWord.lowercased())
     }
 }
