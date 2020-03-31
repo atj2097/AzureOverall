@@ -18,6 +18,9 @@ class DetailViewController: UIViewController {
         super.viewDidLoad()
         view.addSubview(detailView)
         detailView.currentRecipe = currentRecipe
+//        cart = loadCart()
+//        var currentAmountOfTimesItemIsInCart = cart.filter({$0.id == currentRecipe.id}).count
+//        detailView.currentCartContains.text = "This item is in the cart \(currentAmountOfTimesItemIsInCart) times"
         setUpData()
     }
     private func loadCart() -> [RecipeResult] {

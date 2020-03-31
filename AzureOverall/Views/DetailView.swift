@@ -49,24 +49,28 @@ class DetailView: UIView {
     
     lazy var amountOfTimes: UITextField = {
       let input = UITextField()
-        input.placeholder = "# Of Times In The cart"
+        input.placeholder = "Enter Amount"
         return input
+    }()
+    
+    lazy var currentCartContains: UILabel = {
+        let label = UILabel()
+        UIUtilities.setUILabel(label, labelTitle: "", size: 14, alignment: .center)
+        return label
     }()
     
     lazy var addToCartButton: AddToCart = {
         let button = AddToCart()
-        button.setUpCartButton(button: button, target: self, action: #selector(addToCart), width: 50, height: 30)
+        button.setUpCartButton(button: button, target: self, action: #selector(handleStepper), width: 50, height: 30)
         return button
     }()
     
     lazy var uiStepper: UIStepper = {
         let stepper = UIStepper()
-        stepper.wraps = true
-//        stepper.autorepeat = true
-        stepper.maximumValue = 1
+        stepper.maximumValue = 10
         stepper.minimumValue = 0
         stepper.tintColor = AzureConstants.azureGreen
-        stepper.addTarget(self, action: #selector(addToCart), for: .touchUpInside)
+        stepper.addTarget(self, action: #selector(handleStepper), for: .touchUpInside)
         return stepper
     }()
 
@@ -85,41 +89,37 @@ class DetailView: UIView {
         addSubview(recipeImage)
         addSubview(recipeTitle)
         addSubview(uiStepper)
-//        addSubview(addToCartButton)
         addSubview(readyIn)
         addSubview(servings)
-        addSubview(amountOfTimes)
+        addSubview(currentCartContains)
+        addSubview(addToCartButton)
         constraints()
     }
     
+    @objc func handleStepper() {
+        currentCartContains.text = "\(Int(uiStepper.value)) Servings"
+    }
+    
     @objc func addToCart() {
-        var numberOfTimes: Int = Int(amountOfTimes.text ?? "1") ?? 1
-        var cart = try? CartPersistenceManager.manager.getCart()
-        if uiStepper.value == 1.0 {
-            for _ in 0...numberOfTimes {
-                try? CartPersistenceManager.manager.saveRecipe(recipe: currentRecipe)
-            }
-     
-        }
-        else {
-            try? CartPersistenceManager.manager.deleteFavorite(withMessage: currentRecipe.title)
-        }
-        
+        currentRecipe.amountInCart = Int(uiStepper.value)
+        try? CartPersistenceManager.manager.saveRecipe(recipe: currentRecipe)
     }
     
     
     private func constraints() {
-        recipeTitle.snp.makeConstraints{ make in
-            make.top.equalTo(self).offset(50)
-            make.left.equalTo(self).offset(20)
-            make.width.equalTo(self)
+        recipeTitle.translatesAutoresizingMaskIntoConstraints = false
             
-        }
+        recipeTitle.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor, constant: 20).isActive = true
+        
+        
+        
+        
         servings.snp.makeConstraints{ make in
             make.bottom.equalTo(recipeTitle).offset(40)
             make.left.equalTo(recipeTitle)
             make.width.equalTo(recipeTitle)
         }
+        
         readyIn.snp.makeConstraints{ make in
     make.bottom.equalTo(servings).offset(40)
             make.left.equalTo(servings)
@@ -137,17 +137,23 @@ class DetailView: UIView {
         uiStepper.topAnchor.constraint(equalTo: recipeImage.bottomAnchor).isActive = true
         uiStepper.centerXAnchor.constraint(equalTo: recipeImage.centerXAnchor).isActive = true
         
+        addToCartButton.translatesAutoresizingMaskIntoConstraints = false
         
-        amountOfTimes.snp.makeConstraints{ make in
-            make.top.equalTo(550)
-            make.centerX.equalTo(self)
-            make.width.equalTo(recipeImage)
-            make.height.equalTo(50)
-        }
+        addToCartButton.topAnchor.constraint(equalTo: uiStepper.bottomAnchor).isActive = true
+        addToCartButton.leftAnchor.constraint(equalTo: uiStepper.leftAnchor).isActive = true
+        addToCartButton.centerXAnchor.constraint(equalTo: uiStepper.centerXAnchor).isActive = true
+        addToCartButton.widthAnchor.constraint(equalToConstant: 75).isActive = true
+//        amountOfTimes.snp.makeConstraints{ make in
+//            make.top.equalTo(550)
+//            make.centerX.equalTo(self)
+//            make.width.equalTo(recipeImage)
+//            make.height.equalTo(50)
+//        }
         
-        
-        
-        
+        currentCartContains.translatesAutoresizingMaskIntoConstraints = false
+        currentCartContains.topAnchor.constraint(equalTo: addToCartButton.bottomAnchor).isActive = true
+        currentCartContains.leftAnchor.constraint(equalTo: addToCartButton.leftAnchor).isActive = true
+        currentCartContains.widthAnchor.constraint(equalTo: addToCartButton.widthAnchor).isActive = true
     }
 
 }
