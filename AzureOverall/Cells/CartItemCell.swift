@@ -11,20 +11,38 @@ import UIKit
 class CartItemCell: UITableViewCell {
     lazy var recipeImageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.contentMode = .scaleAspectFit
+        imageView.contentMode = .scaleToFill
+        imageView.clipsToBounds = true
         return imageView
     }()
     
     lazy var title: UILabel = {
         let label = UILabel()
-        UIUtilities.setUILabel(label, labelTitle: "", size: 14, alignment: .left)
+        UIUtilities.setUILabel(label, labelTitle: "", size: 40, alignment: .center)
+        label.textColor = AzureConstants.azureWhite
+        label.font = UIFont(name: AzureConstants.azureFont, size: 40)
+        label.font = UIFont.boldSystemFont(ofSize: label.font.pointSize)
+        label.numberOfLines = 0
+        label.lineBreakMode = NSLineBreakMode.byWordWrapping
         return label
     }()
     
     lazy var numberOfTimes: UILabel = {
         let label = UILabel()
-               UIUtilities.setUILabel(label, labelTitle: "", size: 14, alignment: .left)
+        UIUtilities.setUILabel(label, labelTitle: "", size: 30, alignment: .center)
+        label.textColor = AzureConstants.azureWhite
+        label.font = UIFont(name: AzureConstants.azureFont, size: 30)
+        label.font = UIFont.boldSystemFont(ofSize: label.font.pointSize)
+        label.numberOfLines = 0
+        label.lineBreakMode = NSLineBreakMode.byWordWrapping
                return label
+    }()
+    
+    lazy var greenLayer: UIView = {
+        let view = UIView()
+        view.backgroundColor = AzureConstants.azureGreen
+        view.alpha = 0.30
+        return view
     }()
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -49,30 +67,54 @@ class CartItemCell: UITableViewCell {
     }
     
     private func addSubviews() {
+        addSubview(greenLayer)
         addSubview(recipeImageView)
         addSubview(title)
         addSubview(numberOfTimes)
     }
     
     private func constraints() {
+        greenLayer.translatesAutoresizingMaskIntoConstraints = false
         recipeImageView.translatesAutoresizingMaskIntoConstraints = false
+        recipeImageView.addSubview(greenLayer)
         title.translatesAutoresizingMaskIntoConstraints = false
         numberOfTimes.translatesAutoresizingMaskIntoConstraints = false
+//
+        NSLayoutConstraint.activate([
+            greenLayer.leadingAnchor.constraint(equalTo: recipeImageView.leadingAnchor),
+            greenLayer.topAnchor.constraint(equalTo: recipeImageView.topAnchor),
+            greenLayer.bottomAnchor.constraint(equalTo: recipeImageView.bottomAnchor),
+            greenLayer.trailingAnchor.constraint(equalTo: recipeImageView.trailingAnchor)
+        ])
         
         
         //Recipe Image
-        recipeImageView.leftAnchor.constraint(equalTo: contentView.leftAnchor).isActive = true
-        recipeImageView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor).isActive = true
-        recipeImageView.heightAnchor.constraint(equalToConstant: contentView.bounds.height).isActive = true
-        recipeImageView.widthAnchor.constraint(equalToConstant: contentView.bounds.width).isActive = true
+        NSLayoutConstraint.activate([
+            recipeImageView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            recipeImageView.topAnchor.constraint(equalTo: topAnchor),
+            recipeImageView.bottomAnchor.constraint(equalTo: bottomAnchor),
+            recipeImageView.trailingAnchor.constraint(equalTo: trailingAnchor)
+        ])
         
-        //Title
-        title.leftAnchor.constraint(equalTo: recipeImageView.rightAnchor, constant: 15).isActive = true
-        title.centerYAnchor.constraint(equalTo: contentView.centerYAnchor).isActive = true
+        NSLayoutConstraint.activate([
+            title.centerXAnchor.constraint(equalTo: centerXAnchor),
+            title.leadingAnchor.constraint(equalTo: leadingAnchor),
+            title.trailingAnchor.constraint(equalTo: trailingAnchor),
+            title.heightAnchor.constraint(equalToConstant: self.frame.height  / 0.5)
+        ])
         
-        //# Of Times in Cart
-        numberOfTimes.leftAnchor.constraint(equalTo: title.rightAnchor, constant: 15).isActive = true
-        numberOfTimes.centerYAnchor.constraint(equalTo: contentView.centerYAnchor).isActive = true
+        NSLayoutConstraint.activate([
+            numberOfTimes.centerXAnchor.constraint(equalTo: centerXAnchor),
+            numberOfTimes.leadingAnchor.constraint(equalTo: leadingAnchor),
+            numberOfTimes.trailingAnchor.constraint(equalTo: trailingAnchor),
+            numberOfTimes.heightAnchor.constraint(equalToConstant: self.frame.height / 0.5),
+            numberOfTimes.topAnchor.constraint(equalTo: title.bottomAnchor)
+        ])
+        
+        
+        
+        
+        
     }
 
 }

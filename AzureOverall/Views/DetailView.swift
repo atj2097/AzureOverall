@@ -69,7 +69,6 @@ class DetailView: UIView {
     lazy var uiStepper: UIStepper = {
         let stepper = UIStepper(frame: CGRect(x: 0, y: 0, width: 100, height: 60))
         stepper.backgroundColor = .clear
-        
         stepper.setIncrementImage(#imageLiteral(resourceName: "icons8-chevron-right-50"), for: .normal)
         stepper.setDecrementImage(#imageLiteral(resourceName: "icons8-chevron-left-50"), for: .normal)
         stepper.maximumValue = 10
