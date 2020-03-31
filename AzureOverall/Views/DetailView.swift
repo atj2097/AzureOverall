@@ -116,6 +116,7 @@ class DetailView: UIView {
             currentRecipe.amountInCart! += 1
         }
         try? CartPersistenceManager.manager.saveRecipe(recipe: currentRecipe)
+        currentCartContains.text = "Saved To Cart!"
     }
     
     
