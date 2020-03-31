@@ -10,6 +10,9 @@
 		2B5F84BCA38ECD015A604460 /* Pods_AzureOverallTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A3BFCE59E2D9CF76259C709B /* Pods_AzureOverallTests.framework */; };
 		3CA68C2C09E1710455A45A26 /* Pods_AzureOverall_AzureOverallUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6AC8875AE7DDA0B558D42EFE /* Pods_AzureOverall_AzureOverallUITests.framework */; };
 		A21C94344AF04E31321DD48E /* Pods_AzureOverall.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20A7DD02CEE8A71C29C7B9ED /* Pods_AzureOverall.framework */; };
+		CB1036DC2432E2F60027732C /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB1036DB2432E2F60027732C /* NetworkManager.swift */; };
+		CB1036DE2432E32C0027732C /* AppError.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB1036DD2432E32C0027732C /* AppError.swift */; };
+		CB1036E02432E3450027732C /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB1036DF2432E3450027732C /* APIClient.swift */; };
 		CB506391242EE27800BBD37D /* CellIdentifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB506390242EE27800BBD37D /* CellIdentifiers.swift */; };
 		CB506394242EE2BC00BBD37D /* RecipeCellCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB506393242EE2BC00BBD37D /* RecipeCellCollectionViewCell.swift */; };
 		CB5F28D7242EB50E00AC44E1 /* AzureConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB5F28D6242EB50E00AC44E1 /* AzureConstants.swift */; };
@@ -29,6 +32,12 @@
 		CB6DC580242EADCE004ED206 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CB6DC57E242EADCE004ED206 /* LaunchScreen.storyboard */; };
 		CB6DC58B242EADCE004ED206 /* AzureOverallTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB6DC58A242EADCE004ED206 /* AzureOverallTests.swift */; };
 		CB6DC596242EADCE004ED206 /* AzureOverallUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB6DC595242EADCE004ED206 /* AzureOverallUITests.swift */; };
+		CB878D192431452300472AB5 /* TabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB878D182431452300472AB5 /* TabBar.swift */; };
+		CB878D1B243149D000472AB5 /* UIUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB878D1A243149D000472AB5 /* UIUtilities.swift */; };
+		CB878D1D24314E2B00472AB5 /* CartModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB878D1C24314E2B00472AB5 /* CartModel.swift */; };
+		CBD10A5F24327390009A9E82 /* PersistenceHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBD10A5E24327390009A9E82 /* PersistenceHelper.swift */; };
+		CBD10A61243273CA009A9E82 /* CartPersistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBD10A60243273CA009A9E82 /* CartPersistence.swift */; };
+		CBD10A632432768F009A9E82 /* CartItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBD10A622432768F009A9E82 /* CartItemCell.swift */; };
 		CBE93DDB242F8CD500D9158E /* AddToCart.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE93DDA242F8CD500D9158E /* AddToCart.swift */; };
 /* End PBXBuildFile section */
 
@@ -58,6 +67,9 @@
 		6AC8875AE7DDA0B558D42EFE /* Pods_AzureOverall_AzureOverallUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AzureOverall_AzureOverallUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A3BFCE59E2D9CF76259C709B /* Pods_AzureOverallTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AzureOverallTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A715B3745516011F9AAAFE71 /* Pods-AzureOverallTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AzureOverallTests.debug.xcconfig"; path = "Target Support Files/Pods-AzureOverallTests/Pods-AzureOverallTests.debug.xcconfig"; sourceTree = "<group>"; };
+		CB1036DB2432E2F60027732C /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		CB1036DD2432E32C0027732C /* AppError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppError.swift; sourceTree = "<group>"; };
+		CB1036DF2432E3450027732C /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
 		CB506390242EE27800BBD37D /* CellIdentifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellIdentifiers.swift; sourceTree = "<group>"; };
 		CB506393242EE2BC00BBD37D /* RecipeCellCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeCellCollectionViewCell.swift; sourceTree = "<group>"; };
 		CB5F28D6242EB50E00AC44E1 /* AzureConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AzureConstants.swift; sourceTree = "<group>"; };
@@ -83,6 +95,12 @@
 		CB6DC591242EADCE004ED206 /* AzureOverallUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AzureOverallUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CB6DC595242EADCE004ED206 /* AzureOverallUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AzureOverallUITests.swift; sourceTree = "<group>"; };
 		CB6DC597242EADCE004ED206 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CB878D182431452300472AB5 /* TabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBar.swift; sourceTree = "<group>"; };
+		CB878D1A243149D000472AB5 /* UIUtilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIUtilities.swift; sourceTree = "<group>"; };
+		CB878D1C24314E2B00472AB5 /* CartModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartModel.swift; sourceTree = "<group>"; };
+		CBD10A5E24327390009A9E82 /* PersistenceHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceHelper.swift; sourceTree = "<group>"; };
+		CBD10A60243273CA009A9E82 /* CartPersistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartPersistence.swift; sourceTree = "<group>"; };
+		CBD10A622432768F009A9E82 /* CartItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartItemCell.swift; sourceTree = "<group>"; };
 		CBE93DDA242F8CD500D9158E /* AddToCart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddToCart.swift; sourceTree = "<group>"; };
 		E3B1DEFCA2A4464235B55EDF /* Pods-AzureOverall-AzureOverallUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AzureOverall-AzureOverallUITests.debug.xcconfig"; path = "Target Support Files/Pods-AzureOverall-AzureOverallUITests/Pods-AzureOverall-AzureOverallUITests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -125,10 +143,21 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		CB1036DA2432E2BD0027732C /* NetworkHelpers */ = {
+			isa = PBXGroup;
+			children = (
+				CB1036DB2432E2F60027732C /* NetworkManager.swift */,
+				CB1036DD2432E32C0027732C /* AppError.swift */,
+				CB1036DF2432E3450027732C /* APIClient.swift */,
+			);
+			path = NetworkHelpers;
+			sourceTree = "<group>";
+		};
 		CB506392242EE29B00BBD37D /* Cells */ = {
 			isa = PBXGroup;
 			children = (
 				CB506393242EE2BC00BBD37D /* RecipeCellCollectionViewCell.swift */,
+				CBD10A622432768F009A9E82 /* CartItemCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -146,6 +175,7 @@
 			isa = PBXGroup;
 			children = (
 				CB5F28D9242EB5E600AC44E1 /* RecipeModel.swift */,
+				CB878D1C24314E2B00472AB5 /* CartModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -156,6 +186,7 @@
 				CB5F28DC242EB6B900AC44E1 /* BrowseViewController.swift */,
 				CB5F28DE242EB6E700AC44E1 /* CartScreenViewController.swift */,
 				CB5F28E0242EB6FC00AC44E1 /* DetailViewController.swift */,
+				CB878D182431452300472AB5 /* TabBar.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -193,6 +224,8 @@
 		CB6DC56F242EADCB004ED206 /* AzureOverall */ = {
 			isa = PBXGroup;
 			children = (
+				CB1036DA2432E2BD0027732C /* NetworkHelpers */,
+				CBD10A5D2432737A009A9E82 /* Persistence */,
 				CBE93DD9242F8CBD00D9158E /* CustomUI */,
 				CB506392242EE29B00BBD37D /* Cells */,
 				CB5F28E8242EC38300AC44E1 /* Secret */,
@@ -239,10 +272,20 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
+		CBD10A5D2432737A009A9E82 /* Persistence */ = {
+			isa = PBXGroup;
+			children = (
+				CBD10A5E24327390009A9E82 /* PersistenceHelper.swift */,
+				CBD10A60243273CA009A9E82 /* CartPersistence.swift */,
+			);
+			path = Persistence;
+			sourceTree = "<group>";
+		};
 		CBE93DD9242F8CBD00D9158E /* CustomUI */ = {
 			isa = PBXGroup;
 			children = (
 				CBE93DDA242F8CD500D9158E /* AddToCart.swift */,
+				CB878D1A243149D000472AB5 /* UIUtilities.swift */,
 			);
 			path = CustomUI;
 			sourceTree = "<group>";
@@ -498,14 +541,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CB1036DC2432E2F60027732C /* NetworkManager.swift in Sources */,
+				CBD10A632432768F009A9E82 /* CartItemCell.swift in Sources */,
 				CBE93DDB242F8CD500D9158E /* AddToCart.swift in Sources */,
+				CB1036E02432E3450027732C /* APIClient.swift in Sources */,
 				CB5F28E5242EB74800AC44E1 /* CartScreenView.swift in Sources */,
 				CB506394242EE2BC00BBD37D /* RecipeCellCollectionViewCell.swift in Sources */,
+				CBD10A5F24327390009A9E82 /* PersistenceHelper.swift in Sources */,
 				CB5F28E7242EB7A200AC44E1 /* DetailView.swift in Sources */,
 				CB5F28E1242EB6FC00AC44E1 /* DetailViewController.swift in Sources */,
 				CB6DC575242EADCB004ED206 /* ViewController.swift in Sources */,
 				CB5F28E3242EB72B00AC44E1 /* BrowseView.swift in Sources */,
+				CB878D192431452300472AB5 /* TabBar.swift in Sources */,
 				CB6DC57B242EADCB004ED206 /* AzureOverall.xcdatamodeld in Sources */,
+				CB878D1D24314E2B00472AB5 /* CartModel.swift in Sources */,
 				CB5F28DF242EB6E700AC44E1 /* CartScreenViewController.swift in Sources */,
 				CB6DC571242EADCB004ED206 /* AppDelegate.swift in Sources */,
 				CB5F28D7242EB50E00AC44E1 /* AzureConstants.swift in Sources */,
@@ -513,6 +562,9 @@
 				CB5F28DA242EB5E600AC44E1 /* RecipeModel.swift in Sources */,
 				CB5F28EA242EC39F00AC44E1 /* Secrets.swift in Sources */,
 				CB506391242EE27800BBD37D /* CellIdentifiers.swift in Sources */,
+				CB1036DE2432E32C0027732C /* AppError.swift in Sources */,
+				CB878D1B243149D000472AB5 /* UIUtilities.swift in Sources */,
+				CBD10A61243273CA009A9E82 /* CartPersistence.swift in Sources */,
 				CB5F28DD242EB6B900AC44E1 /* BrowseViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -680,6 +732,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 26RHXP32FH;
 				INFOPLIST_FILE = AzureOverall/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -698,6 +751,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 26RHXP32FH;
 				INFOPLIST_FILE = AzureOverall/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

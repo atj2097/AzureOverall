@@ -9,5 +9,5 @@
 import Foundation
 enum CellIdentifiers: String {
     case recipeCell
-    case recipeImage
+    case cartCell
 }

@@ -14,4 +14,4 @@ struct AzureConstants {
    static let apiURL = "https://api.spoonacular.com/recipes/search"
     static let baseImageURL = "https://spoonacular.com/recipeImages/"
     static let azureFont = "Avenir Next"
-}
+    }
