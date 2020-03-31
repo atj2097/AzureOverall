@@ -51,11 +51,6 @@ class BrowseViewController: UIViewController {
         
     }
     
-    private func dismissKeyboardWithTap() {
-      let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
-      view.addGestureRecognizer(tap)
-    }
-    
     private func loadData(foodName:String) {
         let urlStr = RecipeApiClient.getUrlStr(foodName: foodName, count: 10)
         
@@ -70,12 +65,6 @@ class BrowseViewController: UIViewController {
             }
         }
     }
-    
-    
-    @objc func dismissKeyboard() {
-      view.endEditing(true)
-    }
-    
 }
 extension BrowseViewController: UICollectionViewDelegate {
     
