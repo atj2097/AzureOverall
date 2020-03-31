@@ -8,7 +8,7 @@
 
 import UIKit
 import Kingfisher
-//MARK: Add the amount of times the item is in the cart to the cell
+
 class CartScreenViewController: UIViewController {
     let cartScreen = CartScreenView()
     
@@ -23,7 +23,21 @@ class CartScreenViewController: UIViewController {
         view.addSubview(cartScreen)
         cartScreen.tableView.delegate = self
         cartScreen.tableView.dataSource = self
+        title = "Your Cart"
         loadCart()
+    }
+    
+    private func setUpNavBar() {
+        let attrs = [
+                   NSAttributedString.Key.foregroundColor: AzureConstants.azureGreen,
+                          NSAttributedString.Key.font: UIFont(name: AzureConstants.azureFont, size: 30)]
+               self.navigationController?.navigationBar.titleTextAttributes = attrs as [NSAttributedString.Key : Any]
+               self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+               self.navigationController?.navigationBar.shadowImage = UIImage()
+               self.navigationController?.navigationBar.isTranslucent = true
+               self.navigationController?.view.backgroundColor = .clear
+        self.navigationController?.navigationBar.topItem?.title = "\(title ?? "")"
+        
     }
     
     private func loadCart() {
@@ -35,7 +49,7 @@ class CartScreenViewController: UIViewController {
 extension CartScreenViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 100
+        return view.frame.height  * 0.35
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -51,6 +65,7 @@ extension CartScreenViewController: UITableViewDataSource {
         guard let cell = cartScreen.tableView.dequeueReusableCell(withIdentifier: CellIdentifiers.cartCell.rawValue, for: indexPath) as? CartItemCell else {return UITableViewCell()}
         let currentCartItem = cart[indexPath.row]
         cell.title.text = currentCartItem.title
+        cell.numberOfTimes.text = "Number In Cart: \(currentCartItem.amountInCart ?? 1)"
         let url = URL(string: AzureConstants.baseImageURL + currentCartItem.imageUrls[0])
         cell.recipeImageView.kf.setImage(with: url)
         return cell

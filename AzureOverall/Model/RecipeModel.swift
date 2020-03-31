@@ -24,13 +24,13 @@ struct Recipe: Codable {
 }
 
 // MARK: - Result
-struct RecipeResult: Codable {
+struct RecipeResult: Codable, Equatable {
     let id: Int
     let title: String
     let readyInMinutes, servings: Int
     let image: String
     let imageUrls: [String]
-    
+    var amountInCart: Int?
     static func decodeRecipeFromData(from jsonData: Data) throws -> [RecipeResult] {
            let decodeResponse = try JSONDecoder().decode(Recipe.self, from: jsonData)
            return decodeResponse.results

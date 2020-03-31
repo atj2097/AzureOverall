@@ -8,19 +8,27 @@
 
 import UIKit
 import Kingfisher
-//MARK: Add Cart Information - Take the current number of items in a cart, A stepper that adds and removes an item to the cart
+
 class DetailViewController: UIViewController {
     let detailView = DetailView()
     var currentRecipe: RecipeResult!
+    var cart = [RecipeResult]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         view.addSubview(detailView)
         detailView.currentRecipe = currentRecipe
         setUpData()
-        self.navigationItem.title = ""
-        
-         // Do any additional setup after loading the view.
+    }
+    
+    private func checkIfItemIsInCart () {
+        if currentRecipe.amountInCart ?? 0 > 0 {
+            detailView.currentCartContains.text = "\(currentRecipe.amountInCart ?? 0)"
+        }
+    }
+    private func loadCart() -> [RecipeResult] {
+        cart = try! CartPersistenceManager.manager.getCart()
+        return cart
     }
     
     func setUpData() {

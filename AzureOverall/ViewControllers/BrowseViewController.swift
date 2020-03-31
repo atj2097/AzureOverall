@@ -39,30 +39,16 @@ class BrowseViewController: UIViewController {
     
     private func setupNavigationBar() {
         let image = UIImage(systemName: "cart.fill")
-       let cartButton = UIBarButtonItem(image: image, style: .done, target: self, action: #selector(testFunc))
+       let cartButton = UIBarButtonItem(image: image, style: .done, target: self, action: #selector(goToYourCart))
         cartButton.tintColor = AzureConstants.azureGreen
-      UIUtilities.setUpNavigationBar(title: "Pursuit Farms", viewController: self, leftBarButton: cartButton)
+      UIUtilities.setUpNavigationBar(title: "Home", viewController: self, leftBarButton: cartButton)
     }
     
-    @objc func testFunc() {
+    @objc func goToYourCart() {
         
-    }
-    
-//    private func fetchData(search: String) {
-//        let request = AF.request("\(AzureConstants.apiURL)?query=\(search)&number=\(requestSize)&apiKey=\(SecretAPIKey.recipeAPIKey)")
-//
-//    DispatchQueue.main.async {
-//          request.responseDecodable(of: Recipe.self) { (response) in
-//            guard let data = response.value else { return }
-//            self.recipes = data.results
-//            self.browseView.collectionView.reloadData()
-//          }
-//        }
-//    }
-    
-    private func dismissKeyboardWithTap() {
-      let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
-      view.addGestureRecognizer(tap)
+        let cartScreen = CartScreenViewController()
+        self.navigationController?.pushViewController(cartScreen, animated: true)
+        
     }
     
     private func loadData(foodName:String) {
@@ -79,12 +65,6 @@ class BrowseViewController: UIViewController {
             }
         }
     }
-    
-    
-    @objc func dismissKeyboard() {
-      view.endEditing(true)
-    }
-    
 }
 extension BrowseViewController: UICollectionViewDelegate {
     
@@ -122,8 +102,7 @@ extension BrowseViewController: UICollectionViewDataSource {
 //MARK: Search Bar
 extension BrowseViewController: UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        self.searchWord = searchBar.text ?? "apple"
-//  fetchData(search: self.searchWord.lowercased())
+        self.searchWord = searchBar.text?.replacingOccurrences(of: " ", with: "+") ?? "apple"
         loadData(foodName: self.searchWord.lowercased())
     }
 }

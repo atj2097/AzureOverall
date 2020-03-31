@@ -8,11 +8,8 @@
 
 import UIKit
 import SnapKit
-import AnimatedCollectionViewLayout
 
 class BrowseView: UIView {
-    
-    var animator: (LayoutAttributesAnimator, Bool, Int, Int)?
     
     lazy var pursuitFarms: UILabel = {
         let label = UILabel()
@@ -42,23 +39,6 @@ class BrowseView: UIView {
         return collectionView
     }()
     
-    lazy var cartViewLabel: UILabel = {
-        let label = UILabel()
-        UIUtilities.setUILabel(label, labelTitle: "", size: 14, alignment: .center)
-        return label
-    }()
-    
-    lazy var cartView: UIView = {
-        let view = UIView(frame: CGRect(x: 0, y: 0,width: 75, height: 75))
-        view.backgroundColor = AzureConstants.azureGreen
-        view.layer.cornerRadius = frame.height / 2
-        view.layer.shadowColor = UIColor(red: 35/255, green: 46/255, blue: 33/255, alpha: 1).cgColor
-        view.layer.shadowOffset = CGSize(width: 0, height: 0.5)
-        view.layer.shadowOpacity = 0.5
-        view.layer.shadowRadius = 1
-        return view
-    }()
-    
     override init(frame: CGRect) {
         super.init(frame: UIScreen.main.bounds)
         commonInit()
@@ -72,38 +52,28 @@ class BrowseView: UIView {
     
     
     private func commonInit() {
-        addSubview(cartViewLabel)
-        addSubview(cartView)
         addSubview(collectionView)
         addSubview(searchBar)
-        constraints()
+        searchBarConstraints()
+        collectionViewConstraints()
         backgroundColor = .white
-        
     }
     
-    private func constraints() {
-        
-        cartViewLabel.snp.makeConstraints{ make in
-            make.width.equalTo(cartView)
-            make.height.equalTo(cartView)
-            make.centerX.equalTo(cartView)
-            make.top.equalTo(cartView)
-        }
-        
-        cartView.snp.makeConstraints{ make in
-            make.bottom.equalTo(self).offset(50)
-            make.centerX.equalTo(self)
-        }
-        
-        searchBar.snp.makeConstraints{ make in
-            make.top.equalTo(self).offset(80)
-            make.width.equalTo(self)
-            make.centerX.equalTo(self)
-        }
-        
+    private func searchBarConstraints() {
+        searchBar.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            searchBar.leadingAnchor.constraint(equalTo: leadingAnchor),
+            searchBar.topAnchor.constraint(equalTo: topAnchor, constant: 80),
+            searchBar.centerXAnchor.constraint(equalTo: centerXAnchor),
+            searchBar.trailingAnchor.constraint(equalTo: trailingAnchor),
+            searchBar.heightAnchor.constraint(equalToConstant: frame.height / 10)
+        ])
+    }
+    
+    private func collectionViewConstraints() {
         //Collection View
-        var viewWidth = self.bounds.width / 1
-        var height = self.bounds.height / 1.5
+        let viewWidth = self.bounds.width / 1
+        let height = self.bounds.height / 1.5
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         collectionView.widthAnchor.constraint(equalToConstant: viewWidth).isActive = true
         collectionView.heightAnchor.constraint(equalToConstant: height).isActive = true
