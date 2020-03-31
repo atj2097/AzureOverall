@@ -7,6 +7,7 @@
 //
 
 import Foundation
+
 struct SecretAPIKey {
      static let recipeAPIKey = "249c711f71d941458cde77e4419fbcde"
 }

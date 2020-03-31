@@ -10,7 +10,12 @@ import UIKit
 import Kingfisher
 class CartScreenViewController: UIViewController {
     let cartScreen = CartScreenView()
-    var cart = [RecipeResult]()
+    
+    var cart = [RecipeResult]() {
+        didSet {
+            cartScreen.tableView.reloadData()
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -18,17 +23,25 @@ class CartScreenViewController: UIViewController {
         cartScreen.tableView.delegate = self
         cartScreen.tableView.dataSource = self
         loadCart()
-        // Do any additional setup after loading the view.
     }
     
     private func loadCart() {
         cart = try! CartPersistenceManager.manager.getCart()
-        
     }
 
 }
 
 extension CartScreenViewController: UITableViewDataSource {
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 100
+    }
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return cart.count
     }
@@ -46,5 +59,10 @@ extension CartScreenViewController: UITableViewDataSource {
 }
 
 extension CartScreenViewController: UITableViewDelegate {
-    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let detailVC = DetailViewController()
+        detailVC.currentRecipe = cart[indexPath.row]
+        detailVC.modalPresentationStyle = .fullScreen
+        self.navigationController?.pushViewController(detailVC, animated: true)
+    }
 }

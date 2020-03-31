@@ -13,6 +13,7 @@ class CartScreenView: UIView {
     lazy var tableView: UITableView = {
         let table = UITableView(frame: .zero, style: .plain)
         table.register(CartItemCell.self, forCellReuseIdentifier: "cartCell")
+        table.backgroundColor = .white
         return table
     }()
     

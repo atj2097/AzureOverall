@@ -96,7 +96,7 @@ class BrowseView: UIView {
         }
         
         searchBar.snp.makeConstraints{ make in
-            make.top.equalTo(self).offset(70)
+            make.top.equalTo(self).offset(80)
             make.width.equalTo(self)
             make.centerX.equalTo(self)
         }

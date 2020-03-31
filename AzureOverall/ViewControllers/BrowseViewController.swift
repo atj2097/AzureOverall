@@ -25,9 +25,7 @@ class BrowseViewController: UIViewController {
             browseView.collectionView.reloadData()
         }
     }
-    
-    
-    
+
     var requestSize: Int = 6
 
     override func viewDidLoad() {
@@ -50,20 +48,38 @@ class BrowseViewController: UIViewController {
         
     }
     
-    private func fetchData(search: String) {
-        let request = AF.request("\(AzureConstants.apiURL)?query=\(search)&number=\(requestSize)&apiKey=\(SecretAPIKey.recipeAPIKey)")
-    DispatchQueue.main.async {
-          request.responseDecodable(of: Recipe.self) { (response) in
-            guard let data = response.value else { return }
-            self.recipes = data.results 
-            self.browseView.collectionView.reloadData()
-          }
-        }
-    }
+//    private func fetchData(search: String) {
+//        let request = AF.request("\(AzureConstants.apiURL)?query=\(search)&number=\(requestSize)&apiKey=\(SecretAPIKey.recipeAPIKey)")
+//
+//    DispatchQueue.main.async {
+//          request.responseDecodable(of: Recipe.self) { (response) in
+//            guard let data = response.value else { return }
+//            self.recipes = data.results
+//            self.browseView.collectionView.reloadData()
+//          }
+//        }
+//    }
+    
     private func dismissKeyboardWithTap() {
       let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
       view.addGestureRecognizer(tap)
     }
+    
+    private func loadData(foodName:String) {
+        let urlStr = RecipeApiClient.getUrlStr(foodName: foodName, count: 10)
+        
+        RecipeApiClient.manager.getRecipeData(urlStr: urlStr) { (result) in
+            DispatchQueue.main.async {
+                switch result {
+                case .failure(let error):
+                    print(error)
+                case .success(let data):
+                    self.recipes = data
+                }
+            }
+        }
+    }
+    
     
     @objc func dismissKeyboard() {
       view.endEditing(true)
@@ -107,7 +123,7 @@ extension BrowseViewController: UICollectionViewDataSource {
 extension BrowseViewController: UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         self.searchWord = searchBar.text ?? "apple"
-        fetchData(search: self.searchWord.lowercased())
-    
+//  fetchData(search: self.searchWord.lowercased())
+        loadData(foodName: self.searchWord.lowercased())
     }
 }
