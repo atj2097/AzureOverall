@@ -39,17 +39,6 @@ class BrowseView: UIView {
         return collectionView
     }()
     
-    lazy var cartView: UIView = {
-        let view = UIView(frame: CGRect(x: 0, y: 0,width: 75, height: 75))
-        view.backgroundColor = AzureConstants.azureGreen
-        view.layer.cornerRadius = frame.height / 2
-        view.layer.shadowColor = UIColor(red: 35/255, green: 46/255, blue: 33/255, alpha: 1).cgColor
-        view.layer.shadowOffset = CGSize(width: 0, height: 0.5)
-        view.layer.shadowOpacity = 0.5
-        view.layer.shadowRadius = 1
-        return view
-    }()
-    
     override init(frame: CGRect) {
         super.init(frame: UIScreen.main.bounds)
         commonInit()
@@ -63,7 +52,6 @@ class BrowseView: UIView {
     
     
     private func commonInit() {
-        addSubview(cartView)
         addSubview(collectionView)
         addSubview(searchBar)
         constraints()
@@ -72,11 +60,6 @@ class BrowseView: UIView {
     }
     
     private func constraints() {
-        
-        cartView.snp.makeConstraints{ make in
-            make.bottom.equalTo(self).offset(50)
-            make.centerX.equalTo(self)
-        }
         
         searchBar.snp.makeConstraints{ make in
             make.top.equalTo(self).offset(80)
