@@ -49,7 +49,7 @@ class CartScreenViewController: UIViewController {
 extension CartScreenViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return view.frame.height  * 0.25
+        return view.frame.height  * 0.35
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
