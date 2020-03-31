@@ -8,6 +8,7 @@
 
 import UIKit
 import Kingfisher
+//MARK: Add the amount of times the item is in the cart to the cell
 class CartScreenViewController: UIViewController {
     let cartScreen = CartScreenView()
     

@@ -8,6 +8,7 @@
 
 import UIKit
 import Kingfisher
+//MARK: Add Cart Information - Take the current number of items in a cart, A stepper that adds and removes an item to the cart
 class DetailViewController: UIViewController {
     let detailView = DetailView()
     var currentRecipe: RecipeResult!
