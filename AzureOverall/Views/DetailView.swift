@@ -11,7 +11,7 @@ import UIKit
 class DetailView: UIView {
     var currentRecipe: RecipeResult!
     var cart = [RecipeResult]()
-
+    
     lazy var recipeImage: UIImageView = {
         let imageView = UIImageView()
         return imageView
@@ -55,18 +55,23 @@ class DetailView: UIView {
     
     lazy var currentCartContains: UILabel = {
         let label = UILabel()
-        UIUtilities.setUILabel(label, labelTitle: "", size: 14, alignment: .center)
+        UIUtilities.setUILabel(label, labelTitle: "", size: 40, alignment: .center)
+        label.textColor = AzureConstants.azureGreen
         return label
     }()
     
     lazy var addToCartButton: AddToCart = {
         let button = AddToCart()
-        button.setUpCartButton(button: button, target: self, action: #selector(handleStepper), width: 50, height: 30)
+        button.setUpCartButton(button: button, target: self, action: #selector(addToCart), width: 100, height: 30)
         return button
     }()
     
     lazy var uiStepper: UIStepper = {
-        let stepper = UIStepper()
+        let stepper = UIStepper(frame: CGRect(x: 0, y: 0, width: 100, height: 60))
+        stepper.backgroundColor = .clear
+        
+        stepper.setIncrementImage(#imageLiteral(resourceName: "icons8-chevron-right-50"), for: .normal)
+        stepper.setDecrementImage(#imageLiteral(resourceName: "icons8-chevron-left-50"), for: .normal)
         stepper.maximumValue = 10
         stepper.minimumValue = 0
         stepper.tintColor = AzureConstants.azureGreen
@@ -78,6 +83,7 @@ class DetailView: UIView {
            super.init(frame: UIScreen.main.bounds)
            commonInit()
         backgroundColor = .white
+        currentCartContains.text = "0"
 
        }
        
@@ -89,15 +95,15 @@ class DetailView: UIView {
         addSubview(recipeImage)
         addSubview(recipeTitle)
         addSubview(uiStepper)
-        addSubview(readyIn)
-        addSubview(servings)
+//        addSubview(readyIn)
+//        addSubview(servings)
         addSubview(currentCartContains)
         addSubview(addToCartButton)
         constraints()
     }
     
     @objc func handleStepper() {
-        currentCartContains.text = "\(Int(uiStepper.value)) Servings"
+        currentCartContains.text = "\(Int(uiStepper.value))"
     }
     
     @objc func addToCart() {
@@ -111,49 +117,34 @@ class DetailView: UIView {
             
         recipeTitle.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor, constant: 20).isActive = true
         
+        recipeTitle.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -10 ).isActive = true
         
+        recipeTitle.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 10).isActive = true
+        recipeTitle.heightAnchor.constraint(equalToConstant: 35).isActive = true
         
-        
-        servings.snp.makeConstraints{ make in
-            make.bottom.equalTo(recipeTitle).offset(40)
-            make.left.equalTo(recipeTitle)
-            make.width.equalTo(recipeTitle)
-        }
-        
-        readyIn.snp.makeConstraints{ make in
-    make.bottom.equalTo(servings).offset(40)
-            make.left.equalTo(servings)
-            make.width.equalTo(servings)
-            
-        }
-        recipeImage.snp.makeConstraints{ make in
-            make.centerX.equalTo(self)
-            make.centerY.equalTo(self)
-            make.width.equalTo(300)
-            make.height.equalTo(250)
-        }
+        recipeImage.translatesAutoresizingMaskIntoConstraints = false
+        recipeImage.topAnchor.constraint(equalTo: recipeTitle.bottomAnchor, constant: 10).isActive = true
+        recipeImage.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
+        recipeImage.heightAnchor.constraint(equalToConstant: self.frame.height / 2.3 ).isActive = true
         
         uiStepper.translatesAutoresizingMaskIntoConstraints = false
-        uiStepper.topAnchor.constraint(equalTo: recipeImage.bottomAnchor).isActive = true
+        uiStepper.topAnchor.constraint(equalTo: currentCartContains.bottomAnchor, constant: 10).isActive = true
         uiStepper.centerXAnchor.constraint(equalTo: recipeImage.centerXAnchor).isActive = true
         
         addToCartButton.translatesAutoresizingMaskIntoConstraints = false
+            
+        addToCartButton.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
+        addToCartButton.bottomAnchor.constraint(equalTo: self.safeAreaLayoutGuide.bottomAnchor,constant: -20).isActive = true
         
-        addToCartButton.topAnchor.constraint(equalTo: uiStepper.bottomAnchor).isActive = true
-        addToCartButton.leftAnchor.constraint(equalTo: uiStepper.leftAnchor).isActive = true
-        addToCartButton.centerXAnchor.constraint(equalTo: uiStepper.centerXAnchor).isActive = true
-        addToCartButton.widthAnchor.constraint(equalToConstant: 75).isActive = true
-//        amountOfTimes.snp.makeConstraints{ make in
-//            make.top.equalTo(550)
-//            make.centerX.equalTo(self)
-//            make.width.equalTo(recipeImage)
-//            make.height.equalTo(50)
-//        }
+        addToCartButton.widthAnchor.constraint(equalToConstant: self.bounds.width / 1.5).isActive = true
+        
+        addToCartButton.heightAnchor.constraint(equalToConstant: 40).isActive = true
+            
+
         
         currentCartContains.translatesAutoresizingMaskIntoConstraints = false
-        currentCartContains.topAnchor.constraint(equalTo: addToCartButton.bottomAnchor).isActive = true
-        currentCartContains.leftAnchor.constraint(equalTo: addToCartButton.leftAnchor).isActive = true
-        currentCartContains.widthAnchor.constraint(equalTo: addToCartButton.widthAnchor).isActive = true
+        currentCartContains.topAnchor.constraint(equalTo: recipeImage.bottomAnchor, constant: 10 ).isActive = true
+        currentCartContains.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
     }
 
 }
