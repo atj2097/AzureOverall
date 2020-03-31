@@ -39,12 +39,15 @@ class BrowseViewController: UIViewController {
     
     private func setupNavigationBar() {
         let image = UIImage(systemName: "cart.fill")
-       let cartButton = UIBarButtonItem(image: image, style: .done, target: self, action: #selector(testFunc))
+       let cartButton = UIBarButtonItem(image: image, style: .done, target: self, action: #selector(goToYourCart))
         cartButton.tintColor = AzureConstants.azureGreen
-      UIUtilities.setUpNavigationBar(title: "Pursuit Farms", viewController: self, leftBarButton: cartButton)
+      UIUtilities.setUpNavigationBar(title: "Home", viewController: self, leftBarButton: cartButton)
     }
     
-    @objc func testFunc() {
+    @objc func goToYourCart() {
+        
+        let cartScreen = CartScreenViewController()
+        self.navigationController?.pushViewController(cartScreen, animated: true)
         
     }
     
