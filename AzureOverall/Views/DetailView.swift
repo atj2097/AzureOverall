@@ -112,6 +112,9 @@ class DetailView: UIView {
     
     @objc func addToCart() {
         currentRecipe.amountInCart = Int(uiStepper.value)
+        if currentRecipe.amountInCart == 0 {
+            currentRecipe.amountInCart! += 1
+        }
         try? CartPersistenceManager.manager.saveRecipe(recipe: currentRecipe)
     }
     
