@@ -14,6 +14,11 @@ class DetailView: UIView {
     
     lazy var recipeImage: UIImageView = {
         let imageView = UIImageView()
+       imageView.layer.shadowRadius = 4
+       imageView.layer.shadowColor = UIColor(red: 35/255, green: 46/255, blue: 33/255, alpha: 1).cgColor
+        imageView.layer.shadowOffset = CGSize(width: 0, height: 1.0)
+        imageView.layer.shadowOpacity = 0.9
+        imageView.layer.shadowRadius = 4
         return imageView
     }()
     
