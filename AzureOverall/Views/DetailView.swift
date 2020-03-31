@@ -19,6 +19,7 @@ class DetailView: UIView {
         imageView.layer.shadowOffset = CGSize(width: 0, height: 1.0)
         imageView.layer.shadowOpacity = 0.9
         imageView.layer.shadowRadius = 4
+        imageView.contentMode = .scaleAspectFit
         return imageView
     }()
     
@@ -71,7 +72,7 @@ class DetailView: UIView {
         return button
     }()
     
-    lazy var uiStepper: UIStepper = {
+    lazy var amountOfItemsStepper: UIStepper = {
         let stepper = UIStepper(frame: CGRect(x: 0, y: 0, width: 100, height: 60))
         stepper.backgroundColor = .clear
         stepper.setIncrementImage(#imageLiteral(resourceName: "icons8-chevron-right-50"), for: .normal)
@@ -87,7 +88,7 @@ class DetailView: UIView {
            super.init(frame: UIScreen.main.bounds)
            commonInit()
         backgroundColor = .white
-        currentCartContains.text = "0"
+//        currentCartContains.text = "0"
 
        }
        
@@ -98,7 +99,7 @@ class DetailView: UIView {
     private func commonInit() {
         addSubview(recipeImage)
         addSubview(recipeTitle)
-        addSubview(uiStepper)
+        addSubview(amountOfItemsStepper)
 //        addSubview(readyIn)
 //        addSubview(servings)
         addSubview(currentCartContains)
@@ -107,11 +108,11 @@ class DetailView: UIView {
     }
     
     @objc func handleStepper() {
-        currentCartContains.text = "\(Int(uiStepper.value))"
+        currentCartContains.text = "\(Int(amountOfItemsStepper.value))"
     }
     
     @objc func addToCart() {
-        currentRecipe.amountInCart = Int(uiStepper.value)
+        currentRecipe.amountInCart = Int(amountOfItemsStepper.value)
         if currentRecipe.amountInCart == 0 {
             currentRecipe.amountInCart! += 1
         }
@@ -135,9 +136,9 @@ class DetailView: UIView {
         recipeImage.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
         recipeImage.heightAnchor.constraint(equalToConstant: self.frame.height / 2.3 ).isActive = true
         
-        uiStepper.translatesAutoresizingMaskIntoConstraints = false
-        uiStepper.topAnchor.constraint(equalTo: currentCartContains.bottomAnchor, constant: 10).isActive = true
-        uiStepper.centerXAnchor.constraint(equalTo: recipeImage.centerXAnchor).isActive = true
+        amountOfItemsStepper.translatesAutoresizingMaskIntoConstraints = false
+        amountOfItemsStepper.topAnchor.constraint(equalTo: currentCartContains.bottomAnchor, constant: 10).isActive = true
+        amountOfItemsStepper.centerXAnchor.constraint(equalTo: recipeImage.centerXAnchor).isActive = true
         
         addToCartButton.translatesAutoresizingMaskIntoConstraints = false
             
