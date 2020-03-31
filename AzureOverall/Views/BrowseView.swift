@@ -8,11 +8,8 @@
 
 import UIKit
 import SnapKit
-import AnimatedCollectionViewLayout
 
 class BrowseView: UIView {
-    
-    var animator: (LayoutAttributesAnimator, Bool, Int, Int)?
     
     lazy var pursuitFarms: UILabel = {
         let label = UILabel()
