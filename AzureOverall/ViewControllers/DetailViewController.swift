@@ -12,15 +12,17 @@ import Kingfisher
 class DetailViewController: UIViewController {
     let detailView = DetailView()
     var currentRecipe: RecipeResult!
+    var cart = [RecipeResult]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         view.addSubview(detailView)
         detailView.currentRecipe = currentRecipe
         setUpData()
-        self.navigationItem.title = ""
-        
-         // Do any additional setup after loading the view.
+    }
+    private func loadCart() -> [RecipeResult] {
+        cart = try! CartPersistenceManager.manager.getCart()
+        return cart
     }
     
     func setUpData() {

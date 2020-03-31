@@ -10,6 +10,8 @@ import UIKit
 
 class DetailView: UIView {
     var currentRecipe: RecipeResult!
+    var cart = [RecipeResult]()
+
     lazy var recipeImage: UIImageView = {
         let imageView = UIImageView()
         return imageView
@@ -45,6 +47,12 @@ class DetailView: UIView {
         return label
     }()
     
+    lazy var amountOfTimes: UITextField = {
+      let input = UITextField()
+        input.placeholder = "# Of Times In The cart"
+        return input
+    }()
+    
     lazy var addToCartButton: AddToCart = {
         let button = AddToCart()
         button.setUpCartButton(button: button, target: self, action: #selector(addToCart), width: 50, height: 30)
@@ -53,6 +61,8 @@ class DetailView: UIView {
     
     lazy var uiStepper: UIStepper = {
         let stepper = UIStepper()
+        stepper.wraps = true
+//        stepper.autorepeat = true
         stepper.maximumValue = 1
         stepper.minimumValue = 0
         stepper.tintColor = AzureConstants.azureGreen
@@ -75,20 +85,26 @@ class DetailView: UIView {
         addSubview(recipeImage)
         addSubview(recipeTitle)
         addSubview(uiStepper)
-        addSubview(addToCartButton)
+//        addSubview(addToCartButton)
         addSubview(readyIn)
         addSubview(servings)
+        addSubview(amountOfTimes)
         constraints()
     }
     
     @objc func addToCart() {
+        var numberOfTimes: Int = Int(amountOfTimes.text ?? "1") ?? 1
+        var cart = try? CartPersistenceManager.manager.getCart()
         if uiStepper.value == 1.0 {
-            //MARK: Add a for loop and an input for the amount of times you want to add the recipe
-        try? CartPersistenceManager.manager.saveRecipe(recipe: currentRecipe)
+            for _ in 0...numberOfTimes {
+                try? CartPersistenceManager.manager.saveRecipe(recipe: currentRecipe)
+            }
+     
         }
         else {
             try? CartPersistenceManager.manager.deleteFavorite(withMessage: currentRecipe.title)
         }
+        
     }
     
     
@@ -122,7 +138,7 @@ class DetailView: UIView {
         uiStepper.centerXAnchor.constraint(equalTo: recipeImage.centerXAnchor).isActive = true
         
         
-        addToCartButton.snp.makeConstraints{ make in
+        amountOfTimes.snp.makeConstraints{ make in
             make.top.equalTo(550)
             make.centerX.equalTo(self)
             make.width.equalTo(recipeImage)
