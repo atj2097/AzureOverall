@@ -39,12 +39,6 @@ class BrowseView: UIView {
         return collectionView
     }()
     
-    lazy var cartViewLabel: UILabel = {
-        let label = UILabel()
-        UIUtilities.setUILabel(label, labelTitle: "", size: 14, alignment: .center)
-        return label
-    }()
-    
     lazy var cartView: UIView = {
         let view = UIView(frame: CGRect(x: 0, y: 0,width: 75, height: 75))
         view.backgroundColor = AzureConstants.azureGreen
@@ -69,7 +63,6 @@ class BrowseView: UIView {
     
     
     private func commonInit() {
-        addSubview(cartViewLabel)
         addSubview(cartView)
         addSubview(collectionView)
         addSubview(searchBar)
@@ -79,13 +72,6 @@ class BrowseView: UIView {
     }
     
     private func constraints() {
-        
-        cartViewLabel.snp.makeConstraints{ make in
-            make.width.equalTo(cartView)
-            make.height.equalTo(cartView)
-            make.centerX.equalTo(cartView)
-            make.top.equalTo(cartView)
-        }
         
         cartView.snp.makeConstraints{ make in
             make.bottom.equalTo(self).offset(50)
