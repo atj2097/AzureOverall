@@ -33,7 +33,6 @@
 		CB6DC58B242EADCE004ED206 /* AzureOverallTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB6DC58A242EADCE004ED206 /* AzureOverallTests.swift */; };
 		CB6DC596242EADCE004ED206 /* AzureOverallUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB6DC595242EADCE004ED206 /* AzureOverallUITests.swift */; };
 		CB878D1B243149D000472AB5 /* UIUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB878D1A243149D000472AB5 /* UIUtilities.swift */; };
-		CB878D1D24314E2B00472AB5 /* CartModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB878D1C24314E2B00472AB5 /* CartModel.swift */; };
 		CBD10A5F24327390009A9E82 /* PersistenceHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBD10A5E24327390009A9E82 /* PersistenceHelper.swift */; };
 		CBD10A61243273CA009A9E82 /* CartPersistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBD10A60243273CA009A9E82 /* CartPersistence.swift */; };
 		CBD10A632432768F009A9E82 /* CartItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBD10A622432768F009A9E82 /* CartItemCell.swift */; };
@@ -95,7 +94,6 @@
 		CB6DC595242EADCE004ED206 /* AzureOverallUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AzureOverallUITests.swift; sourceTree = "<group>"; };
 		CB6DC597242EADCE004ED206 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CB878D1A243149D000472AB5 /* UIUtilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIUtilities.swift; sourceTree = "<group>"; };
-		CB878D1C24314E2B00472AB5 /* CartModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartModel.swift; sourceTree = "<group>"; };
 		CBD10A5E24327390009A9E82 /* PersistenceHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceHelper.swift; sourceTree = "<group>"; };
 		CBD10A60243273CA009A9E82 /* CartPersistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartPersistence.swift; sourceTree = "<group>"; };
 		CBD10A622432768F009A9E82 /* CartItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartItemCell.swift; sourceTree = "<group>"; };
@@ -173,7 +171,6 @@
 			isa = PBXGroup;
 			children = (
 				CB5F28D9242EB5E600AC44E1 /* RecipeModel.swift */,
-				CB878D1C24314E2B00472AB5 /* CartModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -550,7 +547,6 @@
 				CB6DC575242EADCB004ED206 /* ViewController.swift in Sources */,
 				CB5F28E3242EB72B00AC44E1 /* BrowseView.swift in Sources */,
 				CB6DC57B242EADCB004ED206 /* AzureOverall.xcdatamodeld in Sources */,
-				CB878D1D24314E2B00472AB5 /* CartModel.swift in Sources */,
 				CB5F28DF242EB6E700AC44E1 /* CartScreenViewController.swift in Sources */,
 				CB6DC571242EADCB004ED206 /* AppDelegate.swift in Sources */,
 				CB5F28D7242EB50E00AC44E1 /* AzureConstants.swift in Sources */,
