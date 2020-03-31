@@ -63,7 +63,7 @@ class BrowseView: UIView {
         searchBar.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             searchBar.leadingAnchor.constraint(equalTo: leadingAnchor),
-            searchBar.topAnchor.constraint(equalTo: topAnchor, constant: 105),
+            searchBar.topAnchor.constraint(equalTo: topAnchor, constant: 80),
             searchBar.centerXAnchor.constraint(equalTo: centerXAnchor),
             searchBar.trailingAnchor.constraint(equalTo: trailingAnchor),
             searchBar.heightAnchor.constraint(equalToConstant: frame.height / 10)
