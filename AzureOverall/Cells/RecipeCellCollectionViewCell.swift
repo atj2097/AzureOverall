@@ -49,7 +49,7 @@ class RecipeCellCollectionViewCell: UICollectionViewCell {
     override init(frame: CGRect) {
            super.init(frame: frame)
             addSubviews()
-               constraints()
+            constraints()
         setupContentView()
        }
        
@@ -63,9 +63,20 @@ class RecipeCellCollectionViewCell: UICollectionViewCell {
         contentView.addSubview(recipeTitle)
         contentView.addSubview(servings)
         contentView.addSubview(readyMinutes)
-        print(UIFont.familyNames.sorted())
     }
-    
+    private func recipeImageConstraints() {
+        let contentViewWidth = contentView.frame.width
+        let contentViewHeight = contentView.frame.height
+        
+        NSLayoutConstraint.activate([
+            recipeImage.leadingAnchor.constraint(equalTo: leadingAnchor),
+            recipeImage.heightAnchor.constraint(equalToConstant: contentViewHeight / 1.7),
+            recipeImage.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
+            recipeImage.trailingAnchor.constraint(equalTo: trailingAnchor),
+            recipeImage.topAnchor.constraint(equalTo: topAnchor),
+            recipeImage.bottomAnchor.constraint(equalTo: bottomAnchor)
+        ])
+    }
     private func constraints() {
         recipeImage.snp.makeConstraints{ make in
             make.width.equalTo(contentView)

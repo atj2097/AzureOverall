@@ -64,10 +64,13 @@ extension CartScreenViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = cartScreen.tableView.dequeueReusableCell(withIdentifier: CellIdentifiers.cartCell.rawValue, for: indexPath) as? CartItemCell else {return UITableViewCell()}
         let currentCartItem = cart[indexPath.row]
+        cell.currentItemId = currentCartItem.id
         cell.title.text = currentCartItem.title
         cell.numberOfTimes.text = "Number In Cart: \(currentCartItem.amountInCart ?? 1)"
+        
         let url = URL(string: AzureConstants.baseImageURL + currentCartItem.imageUrls[0])
         cell.recipeImageView.kf.setImage(with: url)
+        
         return cell
     }
     
@@ -80,5 +83,20 @@ extension CartScreenViewController: UITableViewDelegate {
         detailVC.currentRecipe = cart[indexPath.row]
         detailVC.modalPresentationStyle = .fullScreen
         self.navigationController?.pushViewController(detailVC, animated: true)
+    }
+    
+    func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool
+    {
+        return true
+    }
+ 
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == UITableViewCell.EditingStyle.delete {
+//            cart.remove(at: indexPath.row)
+            try? CartPersistenceManager.manager.deleteItem(withMessage: cart[indexPath.row].id)
+            cart = try! CartPersistenceManager.manager.getCart()
+            tableView.reloadData()
+        }
     }
 }

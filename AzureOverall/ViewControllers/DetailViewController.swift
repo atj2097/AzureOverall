@@ -18,17 +18,21 @@ class DetailViewController: UIViewController {
         super.viewDidLoad()
         view.addSubview(detailView)
         detailView.currentRecipe = currentRecipe
+        checkIfItemIsInCart()
         setUpData()
     }
     
     private func checkIfItemIsInCart () {
-        if currentRecipe.amountInCart ?? 0 > 0 {
-            detailView.currentCartContains.text = "\(currentRecipe.amountInCart ?? 0)"
+        cart = loadCart()
+        if cart.contains(currentRecipe){
+            cart = cart.filter({$0.id == currentRecipe.id})
+            currentRecipe.amountInCart = cart[0].amountInCart
+            detailView.currentCartContains.text = "\(currentRecipe.amountInCart ?? 1)"
         }
     }
     private func loadCart() -> [RecipeResult] {
-        cart = try! CartPersistenceManager.manager.getCart()
-        return cart
+        return try! CartPersistenceManager.manager.getCart()
+        
     }
     
     func setUpData() {

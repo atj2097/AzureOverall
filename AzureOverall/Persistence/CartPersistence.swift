@@ -23,12 +23,16 @@ struct CartPersistenceManager {
         return try persistenceHelper.getObjects()
     }
 
-    func deleteFavorite(withMessage: String) throws {
+    func deleteItem(withMessage: Int) throws {
         do {
             let entries = try getCart()
-            let newEntries = entries.filter { $0.title != withMessage}
+            let newEntries = entries.filter { $0.id != withMessage}
             try persistenceHelper.replace(elements: newEntries)
         }
     }
-
+    func updateCart(newCart: [RecipeResult]) throws  {
+        do {
+            try persistenceHelper.replace(elements: newCart)
+        }
+    }
 }
