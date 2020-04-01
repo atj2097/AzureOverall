@@ -114,6 +114,7 @@ class DetailView: UIView {
     @objc func addToCart() {
         var checkCart = try! CartPersistenceManager.manager.getCart()
         var arrayOfIds: [Int] = []
+        var stepperIntValue = Int(amountOfItemsStepper.value)
         checkCart.forEach({
             arrayOfIds.append($0.id)
         })
@@ -125,12 +126,23 @@ class DetailView: UIView {
         }
         //Checks to see if the cart already contains this recipe
         if arrayOfIds.contains(currentRecipe.id){
-            print(checkCart)
+
             let indexOfRecipe = find(value: currentRecipe, in: checkCart)
-            checkCart[indexOfRecipe ?? 0].amountInCart! += Int(amountOfItemsStepper.value)
-           
+//            //Decrementing Value
+//            if checkCart[indexOfRecipe ?? 0].amountInCart! > stepperIntValue {
+//                checkCart[indexOfRecipe ?? 0].amountInCart! -= 1
+//            }
+//            //Incrementing Value
+//            else if checkCart[indexOfRecipe ?? 0].amountInCart! < stepperIntValue {
+//                checkCart[indexOfRecipe ?? 0].amountInCart! += 1
+//            }
+//                //If you are adding a new amount from the browse vc
+//            else if checkCart[indexOfRecipe ?? 0].amountInCart! < 0 {
+            checkCart[indexOfRecipe ?? 0].amountInCart! = Int(amountOfItemsStepper.value)
+            
             try? CartPersistenceManager.manager.updateCart(newCart: checkCart)
-        }
+            }
+    
         //Saves recipe if its not already in cart
         else {
         try? CartPersistenceManager.manager.saveRecipe(recipe: currentRecipe)

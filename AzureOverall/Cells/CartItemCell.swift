@@ -10,6 +10,7 @@ import UIKit
 
 class CartItemCell: UITableViewCell {
     var currentItemId: Int?
+    var parentViewController: UIViewController?
     lazy var recipeImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .scaleToFill
@@ -76,8 +77,7 @@ class CartItemCell: UITableViewCell {
         // Configure the view for the selected state
     }
     @objc func removeFromCart() {
-        try? CartPersistenceManager.manager.deleteItem(withMessage: currentItemId ?? 0)
-        
+        showAlert(with: "Swipe Right To Delete this Item", and: "", parentController: parentViewController!)
     }
     private func addSubviews() {
         addSubview(greenLayer)
@@ -87,6 +87,11 @@ class CartItemCell: UITableViewCell {
         addSubview(trashIcon)
     }
     
+    private func showAlert(with title: String, and message: String, parentController: UIViewController) {
+        let alertVC = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        alertVC.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
+        parentController.present(alertVC, animated: true, completion: nil)
+    }
     
     private func constraints() {
         greenLayer.translatesAutoresizingMaskIntoConstraints = false
