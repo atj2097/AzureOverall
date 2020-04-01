@@ -18,6 +18,7 @@ class DetailViewController: UIViewController {
         super.viewDidLoad()
         view.addSubview(detailView)
         detailView.currentRecipe = currentRecipe
+        detailView.amountOfItemsStepper.value = Double(currentRecipe.amountInCart ?? 0)
         checkIfItemIsInCart()
         setUpData()
     }

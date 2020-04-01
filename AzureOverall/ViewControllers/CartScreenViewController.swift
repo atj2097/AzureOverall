@@ -18,6 +18,10 @@ class CartScreenViewController: UIViewController {
         }
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        loadCart()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.addSubview(cartScreen)
@@ -67,7 +71,7 @@ extension CartScreenViewController: UITableViewDataSource {
         cell.currentItemId = currentCartItem.id
         cell.title.text = currentCartItem.title
         cell.numberOfTimes.text = "Number In Cart: \(currentCartItem.amountInCart ?? 1)"
-        
+        cell.parentViewController = self
         let url = URL(string: AzureConstants.baseImageURL + currentCartItem.imageUrls[0])
         cell.recipeImageView.kf.setImage(with: url)
         

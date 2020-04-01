@@ -114,6 +114,7 @@ class DetailView: UIView {
     @objc func addToCart() {
         var checkCart = try! CartPersistenceManager.manager.getCart()
         var arrayOfIds: [Int] = []
+        var stepperIntValue = Int(amountOfItemsStepper.value)
         checkCart.forEach({
             arrayOfIds.append($0.id)
         })
@@ -125,12 +126,12 @@ class DetailView: UIView {
         }
         //Checks to see if the cart already contains this recipe
         if arrayOfIds.contains(currentRecipe.id){
-            print(checkCart)
+
             let indexOfRecipe = find(value: currentRecipe, in: checkCart)
-            checkCart[indexOfRecipe ?? 0].amountInCart! += Int(amountOfItemsStepper.value)
-           
+            checkCart[indexOfRecipe ?? 0].amountInCart! = Int(amountOfItemsStepper.value)
             try? CartPersistenceManager.manager.updateCart(newCart: checkCart)
-        }
+            }
+    
         //Saves recipe if its not already in cart
         else {
         try? CartPersistenceManager.manager.saveRecipe(recipe: currentRecipe)
@@ -138,7 +139,7 @@ class DetailView: UIView {
             print(checkCart)
              try? CartPersistenceManager.manager.updateCart(newCart: checkCart)
         }
-        currentCartContains.text = "Saved To Cart!"
+        currentCartContains.text = "Cart Updated!"
     }
     
     func find(value searchValue: RecipeResult, in array: [RecipeResult]) -> Int?
