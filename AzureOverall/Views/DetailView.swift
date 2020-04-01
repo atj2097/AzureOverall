@@ -128,18 +128,7 @@ class DetailView: UIView {
         if arrayOfIds.contains(currentRecipe.id){
 
             let indexOfRecipe = find(value: currentRecipe, in: checkCart)
-//            //Decrementing Value
-//            if checkCart[indexOfRecipe ?? 0].amountInCart! > stepperIntValue {
-//                checkCart[indexOfRecipe ?? 0].amountInCart! -= 1
-//            }
-//            //Incrementing Value
-//            else if checkCart[indexOfRecipe ?? 0].amountInCart! < stepperIntValue {
-//                checkCart[indexOfRecipe ?? 0].amountInCart! += 1
-//            }
-//                //If you are adding a new amount from the browse vc
-//            else if checkCart[indexOfRecipe ?? 0].amountInCart! < 0 {
             checkCart[indexOfRecipe ?? 0].amountInCart! = Int(amountOfItemsStepper.value)
-            
             try? CartPersistenceManager.manager.updateCart(newCart: checkCart)
             }
     
@@ -150,7 +139,7 @@ class DetailView: UIView {
             print(checkCart)
              try? CartPersistenceManager.manager.updateCart(newCart: checkCart)
         }
-        currentCartContains.text = "Saved To Cart!"
+        currentCartContains.text = "Cart Updated!"
     }
     
     func find(value searchValue: RecipeResult, in array: [RecipeResult]) -> Int?
