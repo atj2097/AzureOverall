@@ -88,7 +88,7 @@ class DetailView: UIView {
            super.init(frame: UIScreen.main.bounds)
            commonInit()
         backgroundColor = .white
-//        currentCartContains.text = "0"
+        currentCartContains.text = "0"
 
        }
        
