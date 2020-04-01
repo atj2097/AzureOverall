@@ -30,5 +30,9 @@ struct CartPersistenceManager {
             try persistenceHelper.replace(elements: newEntries)
         }
     }
-
+    func updateCart(newCart: [RecipeResult]) throws  {
+        do {
+            try persistenceHelper.replace(elements: newCart)
+        }
+    }
 }
