@@ -9,6 +9,7 @@
 import UIKit
 
 class CartItemCell: UITableViewCell {
+    var currentItemId: Int?
     lazy var recipeImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .scaleToFill
@@ -45,6 +46,15 @@ class CartItemCell: UITableViewCell {
         return view
     }()
     
+    lazy var trashIcon: UIButton = {
+        let button = UIButton()
+        UIUtilities.setUpButton(button, title: "", backgroundColor: .clear, target: self, action: #selector(removeFromCart))
+        let image = UIImage(systemName: "trash")
+        button.setImage(image, for: .normal)
+        button.tintColor = AzureConstants.azureWhite
+        return button
+    }()
+    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
           super.init(style: style, reuseIdentifier: reuseIdentifier)
           addSubviews()
@@ -65,13 +75,18 @@ class CartItemCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-    
+    @objc func removeFromCart() {
+        try? CartPersistenceManager.manager.deleteItem(withMessage: currentItemId ?? 0)
+        
+    }
     private func addSubviews() {
         addSubview(greenLayer)
         addSubview(recipeImageView)
         addSubview(title)
         addSubview(numberOfTimes)
+        addSubview(trashIcon)
     }
+    
     
     private func constraints() {
         greenLayer.translatesAutoresizingMaskIntoConstraints = false
@@ -79,6 +94,7 @@ class CartItemCell: UITableViewCell {
         recipeImageView.addSubview(greenLayer)
         title.translatesAutoresizingMaskIntoConstraints = false
         numberOfTimes.translatesAutoresizingMaskIntoConstraints = false
+        trashIcon.translatesAutoresizingMaskIntoConstraints = false
 //
         NSLayoutConstraint.activate([
             greenLayer.leadingAnchor.constraint(equalTo: recipeImageView.leadingAnchor),
@@ -111,7 +127,12 @@ class CartItemCell: UITableViewCell {
             numberOfTimes.topAnchor.constraint(equalTo: title.bottomAnchor)
         ])
         
-        
+        NSLayoutConstraint.activate([
+           trashIcon.trailingAnchor.constraint(equalTo: trailingAnchor),
+           
+           trashIcon.topAnchor.constraint(equalTo: topAnchor,constant: 10)
+            
+        ])
         
         
         
